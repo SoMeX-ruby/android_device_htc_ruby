@@ -5,7 +5,8 @@ $(call inherit-product, device/htc/ruby/full_ruby.mk)
 $(call inherit-product, vendor/cm/config/common_full_phone.mk)
 
 # Specify phone tech before including full_phone
-$(call inherit-product, vendor/cm/config/gsm.mk)
+#$(call inherit-product, vendor/cm/config/gsm.mk)
+# GSM.mk cause error for now
 
 # Release name
 PRODUCT_RELEASE_NAME := ruby
