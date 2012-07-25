@@ -1,0 +1,257 @@
+import init.ruby.usb.rc
+
+on early-init
+    export EXTERNAL_STORAGE /mnt/sdcard
+    mkdir /mnt/sdcard 0000 system system
+    # for backwards compatibility
+    symlink /mnt/sdcard /sdcard
+    symlink /mnt/sdcard/ext_sd /sdcard2
+
+on init
+    mkdir /system
+    mkdir /data 0771 system system
+    mkdir /cache 0771 system cache
+    mkdir /devlog 0700 root root
+
+on emmc-fs
+    # msm8x60 firmware
+    mkdir /vendor               0771 system system
+    mkdir /vendor/firmware      0771 system system
+    mkdir /vendor/firmware/misc 0771 system system
+    mkdir /vendor/firmware/adsp 0771 system system
+    mkdir /vendor/firmware/misc_mdm 0771 system system
+
+    mount ext4 /dev/block/mmcblk0p10 /system wait ro data=ordered noauto_da_alloc
+    mount ext4 /dev/block/mmcblk0p10 /data wait noatime nosuid nodev data=ordered noauto_da_alloc
+    mount ext4 /dev/block/mmcblk0p10 /cache wait noatime nosuid nodev data=ordered noauto_da_alloc
+    mount ext4 /dev/block/mmcblk0p10 /devlog wait noatime nosuid nodev data=ordered noauto_da_alloc
+
+    mount vfat /dev/block/mmcblk0p10 /vendor/firmware/adsp wait ro shortname=lower
+    mount vfat /dev/block/mmcblk0p10 /vendor/firmware/misc wait ro shortname=lower
+    mount vfat /dev/block/mmcblk0p10 /vendor/firmware/misc_mdm wait ro shortname=lower
+
+    symlink /vendor/firmware/adsp/q6.b07 /vendor/firmware/q6.b07
+    symlink /vendor/firmware/adsp/q6.b06 /vendor/firmware/q6.b06
+    symlink /vendor/firmware/adsp/q6.b05 /vendor/firmware/q6.b05
+    symlink /vendor/firmware/adsp/q6.b04 /vendor/firmware/q6.b04
+    symlink /vendor/firmware/adsp/q6.b03 /vendor/firmware/q6.b03
+    symlink /vendor/firmware/adsp/q6.b02 /vendor/firmware/q6.b02
+    symlink /vendor/firmware/adsp/q6.b01 /vendor/firmware/q6.b01
+    symlink /vendor/firmware/adsp/q6.b00 /vendor/firmware/q6.b00
+    symlink /vendor/firmware/adsp/q6.mdt /vendor/firmware/q6.mdt
+    symlink /vendor/firmware/misc/modem.b10 /vendor/firmware/modem.b10
+    symlink /vendor/firmware/misc/modem.b09 /vendor/firmware/modem.b09
+    symlink /vendor/firmware/misc/modem.b08 /vendor/firmware/modem.b08
+    symlink /vendor/firmware/misc/modem.b07 /vendor/firmware/modem.b07
+    symlink /vendor/firmware/misc/modem.b06 /vendor/firmware/modem.b06
+    symlink /vendor/firmware/misc/modem.b05 /vendor/firmware/modem.b05
+    symlink /vendor/firmware/misc/modem.b04 /vendor/firmware/modem.b04
+    symlink /vendor/firmware/misc/modem.b03 /vendor/firmware/modem.b03
+    symlink /vendor/firmware/misc/modem.b02 /vendor/firmware/modem.b02
+    symlink /vendor/firmware/misc/modem.b01 /vendor/firmware/modem.b01
+    symlink /vendor/firmware/misc/modem.b00 /vendor/firmware/modem.b00
+    symlink /vendor/firmware/misc/modem.mdt /vendor/firmware/modem.mdt
+    symlink /vendor/firmware/misc_mdm/image/amss.mbn /vendor/firmware/amss.mbn
+    symlink /vendor/firmware/misc_mdm/image/dsp1.mbn /vendor/firmware/dsp1.mbn
+    symlink /vendor/firmware/misc_mdm/image/dsp2.mbn /vendor/firmware/dsp2.mbn
+    symlink /vendor/firmware/misc_mdm/image/dbl.mbn /vendor/firmware/dbl.mbn
+    symlink /vendor/firmware/misc_mdm/image/osbl.mbn /vendor/firmware/osbl.mbn
+    symlink /vendor/firmware/misc_mdm/image/efs1.mbn /vendor/firmware/efs1.mbn
+    symlink /vendor/firmware/misc_mdm/image/efs2.mbn /vendor/firmware/efs2.mbn
+    symlink /vendor/firmware/misc_mdm/image/amss.mbn /vendor/firmware/amss.mbn
+    symlink /vendor/firmware/misc_mdm/image/htcssmem.mbn /vendor/firmware/htcssmem.mbn
+
+on post-fs
+    mkdir /data/qcks 0770 system system
+
+    # Set indication (checked by vold) that we have finished this action
+    setprop vold.post_fs_done 1
+
+
+on boot
+    # Radio
+    mkdir /data/radio 0770 radio radio
+    chown radio system /sys/module/smd_rpcrouter/parameters/debug_mask
+    chown radio system /sys/module/rpcrouter_sdio_xprt/parameters/debug_mask
+
+    # Bluetooth power up/down interface
+    chown bluetooth bluetooth /sys/class/rfkill/rfkill0/type
+    chown bluetooth bluetooth /sys/class/rfkill/rfkill0/state
+    chmod 0660                /sys/class/rfkill/rfkill0/state
+
+    # Wifi
+    mkdir /data/misc/wifi 0770 wifi wifi
+    mkdir /data/misc/wifi/sockets 0770 wifi wifi
+    mkdir /data/misc/dhcp 0770 dhcp dhcp
+    chown dhcp dhcp /data/misc/dhcp
+    chown wifi wifi /system/etc/firmware/ti-connectivity/*
+    chown wifi wifi /system/etc/wifi/wpa_supplicant.conf
+    chown wifi wifi /data/misc/wifi/wpa_supplicant.conf
+    chown wifi wifi /data/misc/wifi/p2p_supplicant.conf
+    chown wifi wifi /data/misc/wifi/p2p_supplicant_manual.conf
+    insmod /system/lib/modules/compat.ko
+    insmod /system/lib/modules/cfg80211.ko
+    insmod /system/lib/modules/mac80211.ko
+    insmod /system/lib/modules/wl12xx.ko debug_level=0x63c00
+
+    # for modem link
+    chown system system /sys/module/serial/parameters/modem_enabled
+
+    # for Flip to speaker
+    chown radio radio /sys/class/htc_accelerometer/accelerometer/PhoneOnOffFlag
+    chown radio radio /sys/class/htc_ecompass/ecompass/PhoneOnOffFlag
+
+    # for Optical sensors
+    chown system system /sys/class/optical_sensors/lightsensor/ls_adc
+    chown system system /sys/class/optical_sensors/lightsensor/ls_auto
+    chown system system /sys/class/optical_sensors/lightsensor/ls_kadc
+    chown system radio /sys/class/optical_sensors/proximity/ps_adc
+    chown system system /sys/class/optical_sensors/proximity/ps_kadc
+    chown system system /sys/class/optical_sensors/proximity/ps_led
+    chown system system /sys/class/optical_sensors/proximity/ps_test_mode
+
+    # NFC
+    setprop debug.nfc.fw_download "false"
+
+    # for charging function
+    chown radio radio /sys/module/htc_battery_8x60/parameters/phone_call
+    chmod 0660 /sys/module/htc_battery_8x60/parameters/phone_call
+
+    # for RIL to notify battery driver talking and network_search state
+    chown radio radio /sys/class/power_supply/battery/phone_call
+
+    # Load kineto_gan.ko while booting
+    insmod /system/lib/modules/kineto_gan.ko
+
+# Services start here
+
+service akmd /system/bin/akmd
+    user compass
+    group compass misc input
+
+service chmod_nvs_wlan0 /system/bin/chmod 644 /data/misc/wifi/wl1271-nvs-calibrated.bin
+    class core
+    user root
+    group root
+    oneshot
+    disabled
+
+service dhcpcd_p2p /system/bin/dhcpcd -aABKL
+    oneshot
+    disabled
+
+service dhcpcd_wlan0 /system/bin/dhcpcd -ABKL
+    oneshot
+    disabled
+
+service ewtzmud /system/bin/ewtzmud
+    user system
+    group system misc input
+
+service hdmid /system/bin/hdmid
+    socket displayd stream 0660 root system graphics
+
+service hostapd_bin /system/bin/hostapd -d /data/misc/wifi/hostapd.conf
+    socket wpa_wlan1 dgram 660 wifi wifi
+    oneshot
+    disabled
+
+service htcbatt /system/bin/htcbatt
+    user root
+
+service initial_regdom /system/bin/initial_regdom.sh
+     oneshot
+     disabled
+
+service iprenew_p2p /system/bin/dhcpcd -n
+    oneshot
+    disabled
+
+service iprenew_wlan0 /system/bin/dhcpcd -n
+    oneshot
+    disabled
+
+service kickstart /system/bin/qcks l
+    oneshot
+
+service load-modem /system/bin/load-modem.sh
+    oneshot
+
+service modem /system/xbin/wireless_modem
+    user system
+    group system radio
+    disabled
+
+service mpdecision /system/bin/mpdecision --no_sleep --avg_comp --single_core_while_panel_off
+    user root
+    disabled
+
+service netmgrd /system/bin/netmgrd
+
+service p2p_supplicant /system/bin/wpa_supplicant -Dnl80211 -iwlan0 -c/data/misc/wifi/p2p_supplicant.conf -dt
+    socket wpa_p2p_wlan0:0 dgram 660 wifi wifi
+    oneshot
+    disabled
+
+service qcom-post-boot /system/bin/sh /system/etc/init.qcom.post_boot.sh
+    user root
+    oneshot
+    disabled
+
+service qmuxd /system/bin/qmuxd
+
+service rmt_storage /system/bin/rmt_storage /dev/block/mmcblk0p25 /dev/block/mmcblk0p26 NULL NULL /dev/block/mmcblk0p27 /dev/block/mmcblk0p28 /dev/block/mmcblk0p20
+    class core
+    user root
+
+service thermald /system/bin/thermald
+    user root
+    disabled
+
+service upd_nvs_wlan0 /system/bin/calibrator set upd_nvs /system/etc/wifi/TQS_D_1.7.ini /proc/calibration /data/misc/wifi/wl1271-nvs-calibrated.bin
+    class core
+    user root
+    group root
+    oneshot
+    disabled
+
+service uim /system/bin/uimqc
+    class core
+    user root
+    group media bluetooth
+    oneshot
+
+service wpa_supplicant /system/bin/wpa_supplicant -Dnl80211 -iwlan0
+    socket wpa_wlan0 dgram 660 wifi wifi
+    oneshot
+    disabled
+
+service zchgd_offmode /system/bin/zchgd -pseudooffmode
+    user root
+    disabled
+
+service zchgd_onmode /system/bin/zchgd -onmode
+    user root
+    oneshot
+
+on property:init.svc.bootanim=stopped
+    start qcom-post-boot
+    start mpdecision
+    start thermald
+
+on property:init.svc.hostapd_bin=running
+    start initial_regdom
+
+on property:ro.use_data_netmgrd=false
+    # netmgr not supported on specific target
+    stop netmgrd
+
+on property:service.modem.enable=1
+    start modem
+
+on property:service.modem.enable=0
+    stop modem
+
+on property:wlan.driver.status=ok
+    chown wifi wifi /sys/devices/platform/wl1271/bt_coex_state
+    start initial_regdom
