@@ -458,15 +458,10 @@ service zchgd_onmode /system/bin/zchgd -onmode
     oneshot
 
 service qmuxd /system/bin/qmuxd
-    class core
-    user radio
-    group radio audio
+    class main
 
 service netmgrd /system/bin/netmgrd
-
-on property:ro.use_data_netmgrd=false
-    # netmgr not supported on specific target
-    stop netmgrd
+    class main
 
 service hdmid /system/bin/hdmid
     socket displayd stream 0660 root system graphics
