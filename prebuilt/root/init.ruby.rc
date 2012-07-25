@@ -458,9 +458,9 @@ service zchgd_onmode /system/bin/zchgd -onmode
     oneshot
 
 service qmuxd /system/bin/qmuxd
-#    class core
-#    user radio
-#    group radio audio
+    class core
+    user radio
+    group radio audio
 
 service netmgrd /system/bin/netmgrd
 
