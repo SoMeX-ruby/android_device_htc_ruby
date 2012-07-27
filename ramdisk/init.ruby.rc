@@ -31,6 +31,7 @@ on emmc-fs
 
     mount vfat /dev/block/mmcblk0p21 /vendor/firmware/adsp wait ro shortname=lower
     mount vfat /dev/block/mmcblk0p17 /vendor/firmware/misc wait ro shortname=lower
+    mount vfat /dev/block/mmcblk0p18 /vendor/firmware/misc_mdm wait ro shortname=lower
 
     symlink /vendor/firmware/adsp/q6.b07 /vendor/firmware/q6.b07
     symlink /vendor/firmware/adsp/q6.b06 /vendor/firmware/q6.b06
