@@ -73,7 +73,6 @@ PRODUCT_COPY_FILES += device/htc/ruby/configs/thermald.conf:system/etc/thermald.
 
 # Sound configs
 PRODUCT_COPY_FILES += \
-PRODUCT_COPY_FILES += \
     device/htc/ruby/dsp/AIC3254_REG_DualMic.csv:system/etc/AIC3254_REG_DualMic.csv \
     device/htc/ruby/dsp/AIC3254_REG_DualMic_XD.csv:system/etc/AIC3254_REG_DualMic_XD.csv \
     device/htc/ruby/dsp/AdieHWCodec.csv:system/etc/AdieHWCodec.csv \
