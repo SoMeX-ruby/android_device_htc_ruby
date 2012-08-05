@@ -48,9 +48,10 @@ PRODUCT_COPY_FILES += \
     device/htc/ruby/configs/init.qcom.sdio.sh:system/etc/init.qcom.sdio.sh \
     device/htc/ruby/configs/init.qcom.wifi.sh:system/etc/init.qcom.wifi.sh
 
-# Vold
+# Vold & Init
 PRODUCT_COPY_FILES += \
-    device/htc/ruby/vold.fstab:system/etc/vold.fstab
+    device/htc/ruby/vold.fstab:system/etc/vold.fstab \
+    device/htc/ruby/kernel/init:root/init
 
 # Keylayouts and Keychars
 PRODUCT_COPY_FILES += \
