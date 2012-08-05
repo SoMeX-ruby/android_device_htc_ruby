@@ -1,14 +1,14 @@
 import init.ruby.usb.rc
 
 on early-init
-# internal
-    export SECONDARY_STORAGE /mnt/sdcard
     mkdir /mnt/sdcard 0000 system system
     symlink /mnt/sdcard /sdcard
-    # external
-    export EXTERNAL_STORAGE /mnt/sdcard2
-    mkdir /mnt/sdcard2 0000 system system
-    symlink /mnt/sdcard2 /sdcard/ext_sd
+
+    mkdir /mnt/emmc 0000 system system
+    symlink /mnt/emmc /emmc
+
+    export EXTERNAL_STORAGE /mnt/emmc
+    export SECONDARY_STORAGE /mnt/sdcard
 
 on init
     mkdir /system
@@ -87,7 +87,7 @@ on boot
     mkdir /data/misc/wifi/sockets 0770 wifi wifi
     mkdir /data/misc/dhcp 0770 dhcp dhcp
     chown dhcp dhcp /data/misc/dhcp
-    chown wifi wifi /system/etc/firmware/ti-connectivity/*
+    chown wifi wifi /system/etc/firmware/ti-connectivity
     chown wifi wifi /system/etc/wifi/wpa_supplicant.conf
     chown wifi wifi /data/misc/wifi/wpa_supplicant.conf
     chown wifi wifi /data/misc/wifi/p2p_supplicant.conf
