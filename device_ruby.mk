@@ -30,6 +30,12 @@ PRODUCT_PACKAGES += \
     Tag \
     com.android.nfc_extras
 
+# Hostapd
+PRODUCT_PACKAGES += \
+    hostapd_cli \
+    calibrator \
+    hostapd
+
 # US GPS config
 PRODUCT_COPY_FILES += device/common/gps/gps.conf_US:system/etc/gps.conf
 
