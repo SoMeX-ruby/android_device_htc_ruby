@@ -4,10 +4,10 @@ on early-init
     mkdir /mnt/sdcard 0000 system system
     symlink /mnt/sdcard /sdcard
 
-    mkdir /mnt/sdcard2 0000 system system
-    symlink /mnt/sdcard2 /sdcard/ext_sd
+    mkdir /mnt/emmc 0000 system system
+    symlink /mnt/emmc /emmc
 
-    export EXTERNAL_STORAGE /mnt/sdcard2
+    export EXTERNAL_STORAGE /mnt/emmc
     export SECONDARY_STORAGE /mnt/sdcard
 
 on init
@@ -204,6 +204,15 @@ service qcom-post-boot /system/bin/sh /system/etc/init.qcom.post_boot.sh
 
 service qmuxd /system/bin/qmuxd
     class main
+
+service ril-daemon /system/bin/rild
+    class main
+    socket rild stream 660 root radio
+    socket rild-debug stream 660 radio system
+    socket rild-htc stream 660 radio system
+    socket aepls001 stream 660 radio system
+    user root
+    group radio cache inet misc audio sdcard_rw log
 
 service rmt_storage /system/bin/rmt_storage /dev/block/mmcblk0p25 /dev/block/mmcblk0p26 NULL NULL /dev/block/mmcblk0p27 /dev/block/mmcblk0p28 /dev/block/mmcblk0p20
     class core
