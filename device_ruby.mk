@@ -35,7 +35,7 @@ PRODUCT_PACKAGES += \
     Tag \
     com.android.nfc_extras
 
-# Hostapd
+# Hostapd (Required for Wi-Fi)
 PRODUCT_PACKAGES += \
     hostapd_cli \
     calibrator \
@@ -46,6 +46,7 @@ PRODUCT_COPY_FILES += device/common/gps/gps.conf_US:system/etc/gps.conf
 
 # Ramdisk files
 PRODUCT_COPY_FILES += \
+	device/htc/ruby/ramdisk/init:root/init \
     device/htc/ruby/ramdisk/init.qcom.sh:root/init.qcom.sh \
     device/htc/ruby/ramdisk/init.ruby.rc:root/init.ruby.rc \
     device/htc/ruby/ramdisk/init.ruby.usb.rc:root/init.ruby.usb.rc \
@@ -59,10 +60,9 @@ PRODUCT_COPY_FILES += \
     device/htc/ruby/configs/init.qcom.sdio.sh:system/etc/init.qcom.sdio.sh \
     device/htc/ruby/configs/init.qcom.wifi.sh:system/etc/init.qcom.wifi.sh
 
-# Vold & Init
+# Vold
 PRODUCT_COPY_FILES += \
-    device/htc/ruby/vold.fstab:system/etc/vold.fstab \
-    device/htc/ruby/kernel/init:root/init
+    device/htc/ruby/vold.fstab:system/etc/vold.fstab
 
 # Keylayouts and Keychars
 PRODUCT_COPY_FILES += \
@@ -71,9 +71,6 @@ PRODUCT_COPY_FILES += \
     device/htc/ruby/keylayout/AVRCP.kl:system/usr/keylayout/AVRCP.kl \
     device/htc/ruby/keylayout/h2w_headset.kl:system/usr/keylayout/h2w_headset.kl \
     device/htc/ruby/keylayout/ruby-keypad.kl:system/usr/keylayout/ruby-keypad.kl
-
-PRODUCT_COPY_FILES += \
-    device/htc/ruby/libril.so:system/lib/libril.so
 
 # Input device config
 PRODUCT_COPY_FILES += \
@@ -109,7 +106,6 @@ PRODUCT_COPY_FILES += \
     device/htc/ruby/dsp/soundimage/srsfx_trumedia_music.cfg:system/etc/soundimage/srsfx_trumedia_music.cfg \
     device/htc/ruby/dsp/soundimage/srsfx_trumedia_voice.cfg:system/etc/soundimage/srsfx_trumedia_voice.cfg
 
-
 # Permissions
 PRODUCT_COPY_FILES += \
     frameworks/base/data/etc/android.hardware.nfc.xml:system/etc/permissions/android.hardware.nfc.xml \
@@ -120,6 +116,36 @@ PRODUCT_COPY_FILES += \
 # Custom media config for HTC camera
 PRODUCT_COPY_FILES += \
     device/htc/ruby/configs/media_profiles.xml:system/etc/media_profiles.xml
+
+## recovery and custom charging
+PRODUCT_COPY_FILES += \
+    device/htc/ruby/recovery/root/sbin/choice_fn:recovery/root/sbin/choice_fn \
+    device/htc/ruby/recovery/root/sbin/power_test:recovery/root/sbin/power_test \
+    device/htc/ruby/recovery/root/sbin/offmode_charging:recovery/root/sbin/offmode_charging \
+    device/htc/ruby/recovery/root/sbin/detect_key:recovery/root/sbin/detect_key \
+    device/htc/ruby/recovery/root/sbin/htcbatt:recovery/root/sbin/htcbatt
+
+# Firmware (Required for Wi-Fi)
+PRODUCT_COPY_FILES += \
+    device/htc/ruby/firmware/fmc_init_1273.2.bts:system/etc/firmware/fmc_init_1273.2.bts \
+    device/htc/ruby/firmware/fm_rx_init_1273.2.bts:system/etc/firmware/fm_rx_init_1273.2.bts \
+    device/htc/ruby/firmware/leia_pfp_470.fw:system/etc/firmware/leia_pfp_470.fw \
+    device/htc/ruby/firmware/leia_pm4_470.fw:system/etc/firmware/leia_pm4_470.fw \
+    device/htc/ruby/firmware/protocols:system/etc/firmware/protocols \
+    device/htc/ruby/firmware/TIInit_7.6.15.bts:system/etc/firmware/TIInit_7.6.15.bts \
+    device/htc/ruby/firmware/vac_config.ini:system/etc/firmware/vac_config.ini \
+    device/htc/ruby/firmware/version:system/etc/firmware/version \
+    device/htc/ruby/firmware/vidc_1080p.fw:system/etc/firmware/vidc_1080p.fw \
+    device/htc/ruby/firmware/WL127x_2.0_2.25.bts:system/etc/firmware/WL127x_2.0_2.25.bts \
+    device/htc/ruby/firmware/yamato_pfp.fw:system/etc/firmware/yamato_pfp.fw \
+    device/htc/ruby/firmware/yamato_pm4.fw:system/etc/firmware/yamato_pm4.fw 
+
+# ti-connectivity (Required for Wi-Fi)
+PRODUCT_COPY_FILES += \
+    device/htc/ruby/firmware/ti-connectivity/wl127x-fw-4-mr.bin:system/etc/firmware/wl127x-fw-4-mr.bin \
+    device/htc/ruby/firmware/ti-connectivity/wl127x-fw-4-plt.bin:system/etc/firmware/wl127x-fw-4-plt.bin \
+    device/htc/ruby/firmware/ti-connectivity/wl127x-fw-4-sr.bin:system/etc/firmware/wl127x-fw-4-sr.bin \
+    device/htc/ruby/firmware/ti-connectivity/wl1271-nvs.bin:system/etc/firmware/wl1271-nvs.bin \
 
 # misc
 PRODUCT_PROPERTY_OVERRIDES += \
