@@ -46,7 +46,6 @@ PRODUCT_COPY_FILES += device/common/gps/gps.conf_US:system/etc/gps.conf
 
 # Ramdisk files
 PRODUCT_COPY_FILES += \
-	device/htc/ruby/ramdisk/init:root/init \
     device/htc/ruby/ramdisk/init.qcom.sh:root/init.qcom.sh \
     device/htc/ruby/ramdisk/init.ruby.rc:root/init.ruby.rc \
     device/htc/ruby/ramdisk/init.ruby.usb.rc:root/init.ruby.usb.rc \
@@ -78,7 +77,8 @@ PRODUCT_COPY_FILES += \
     device/htc/ruby/idc/ruby-keypad.idc:system/usr/idc/ruby-keypad.idc
 
 # QC thermald config
-PRODUCT_COPY_FILES += device/htc/ruby/configs/thermald.conf:system/etc/thermald.conf
+PRODUCT_COPY_FILES += \
+device/htc/ruby/configs/thermald.conf:system/etc/thermald.conf
 
 # Sound configs
 PRODUCT_COPY_FILES += \
@@ -105,13 +105,6 @@ PRODUCT_COPY_FILES += \
     device/htc/ruby/dsp/soundimage/srsfx_trumedia_movie.cfg:system/etc/soundimage/srsfx_trumedia_movie.cfg \
     device/htc/ruby/dsp/soundimage/srsfx_trumedia_music.cfg:system/etc/soundimage/srsfx_trumedia_music.cfg \
     device/htc/ruby/dsp/soundimage/srsfx_trumedia_voice.cfg:system/etc/soundimage/srsfx_trumedia_voice.cfg
-
-# Permissions
-PRODUCT_COPY_FILES += \
-    frameworks/base/data/etc/android.hardware.nfc.xml:system/etc/permissions/android.hardware.nfc.xml \
-    frameworks/base/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml \
-    frameworks/base/data/etc/android.hardware.wifi.direct.xml:system/etc/permissions/android.hardware.wifi.direct.xml \
-    frameworks/base/nfc-extras/com.android.nfc_extras.xml:system/etc/permissions/com.android.nfc_extras.xml
 
 # Custom media config for HTC camera
 PRODUCT_COPY_FILES += \
@@ -142,10 +135,21 @@ PRODUCT_COPY_FILES += \
 
 # ti-connectivity (Required for Wi-Fi)
 PRODUCT_COPY_FILES += \
-    device/htc/ruby/firmware/ti-connectivity/wl127x-fw-4-mr.bin:system/etc/firmware/wl127x-fw-4-mr.bin \
-    device/htc/ruby/firmware/ti-connectivity/wl127x-fw-4-plt.bin:system/etc/firmware/wl127x-fw-4-plt.bin \
-    device/htc/ruby/firmware/ti-connectivity/wl127x-fw-4-sr.bin:system/etc/firmware/wl127x-fw-4-sr.bin \
-    device/htc/ruby/firmware/ti-connectivity/wl1271-nvs.bin:system/etc/firmware/wl1271-nvs.bin \
+    device/htc/ruby/firmware/ti-connectivity/wl127x-fw-4-mr.bin:system/etc/firmware/ti-connectivity/wl127x-fw-4-mr.bin \
+    device/htc/ruby/firmware/ti-connectivity/wl127x-fw-4-plt.bin:system/etc/firmware/ti-connectivity/wl127x-fw-4-plt.bin \
+    device/htc/ruby/firmware/ti-connectivity/wl127x-fw-4-sr.bin:system/etc/firmware/ti-connectivity/wl127x-fw-4-sr.bin \
+    device/htc/ruby/firmware/ti-connectivity/wl1271-nvs.bin:system/etc/firmware/ti-connectivity/wl1271-nvs.bin 
+
+# WiFi & NFC
+PRODUCT_COPY_FILES += \
+    device/htc/ruby/wifi/95-configured:system/etc/dhcpcd-hooks/95-configured \
+    device/htc/ruby/wifi/libpn544_fw.so:system/vendor/firmware/libpn544_fw.so \
+    device/htc/ruby/wifi/libpn544_fw.so:system/lib/libpn544_fw.so \
+    device/htc/ruby/wifi/p2p_supplicant.conf:system/etc/wifi/p2p_supplicant.conf \
+    device/htc/ruby/wifi/p2p_supplicant_manual.conf:system/etc/wifi/p2p_supplicant_manual.conf \
+    device/htc/ruby/wifi/rt_tables:system/etc/iproute2/rt_tables \
+    device/htc/ruby/wifi/TQS_D_1.7.ini:system/etc/wifi/TQS_D_1.7.ini \
+    device/htc/ruby/wifi/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf 
 
 # misc
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -161,6 +165,13 @@ PRODUCT_COPY_FILES += $(shell \
     | sed -r 's/^\/?(.*\/)([^/ ]+)$$/\1\2:system\/lib\/modules\/\2/' \
     | tr '\n' ' ')
 endif
+
+# Permissions
+PRODUCT_COPY_FILES += \
+    frameworks/base/data/etc/android.hardware.nfc.xml:system/etc/permissions/android.hardware.nfc.xml \
+    frameworks/base/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml \
+    frameworks/base/data/etc/android.hardware.wifi.direct.xml:system/etc/permissions/android.hardware.wifi.direct.xml \
+    frameworks/base/nfc-extras/com.android.nfc_extras.xml:system/etc/permissions/com.android.nfc_extras.xml
 
 # call proprietary setup
 $(call inherit-product-if-exists, vendor/htc/ruby/ruby-vendor.mk)# media profiles and capabilities spec

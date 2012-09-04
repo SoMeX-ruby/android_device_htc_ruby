@@ -5,7 +5,6 @@ etc/vpimg
 # Executable files
 bin/akmd
 bin/awb_camera
-bin/calibrator
 bin/charging
 bin/ewtzmud
 bin/htcbatt
@@ -78,7 +77,6 @@ lib/hw/nfc.ruby.so
 vendor/firmware/libpn544_fw.so
 
 # Radio
-lib/libhtc_ril.so
 lib/libnetmgr.so
 lib/libnv.so
 lib/libqc-opt.so
@@ -92,6 +90,8 @@ lib/libril-qcril-hook-oem.so
 
 # Sensors
 lib/hw/sensors.ruby.so
+lib/hw/lights.msm8660.so
+lib/hw/gps.ruby.so
 lib/libmllite.so
 lib/libmlplatform.so
 lib/libmpl_jni.so

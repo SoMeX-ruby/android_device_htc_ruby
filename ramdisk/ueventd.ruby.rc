@@ -208,5 +208,5 @@
 
 # Simlock
 /dev/simlock              0660   radio      radio
-
-
+# Wi-Fi
+#/dev/rfkill             0660    root    wifi
