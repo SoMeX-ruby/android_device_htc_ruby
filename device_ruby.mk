@@ -27,6 +27,9 @@ PRODUCT_PACKAGES += \
     gps.ruby \
     lights.ruby
 
+## The gps config appropriate for this device
+PRODUCT_COPY_FILES += device/common/gps/gps.conf_EU:system/etc/gps.conf
+
 # NFC
 PRODUCT_PACKAGES += \
     libnfc \
@@ -35,17 +38,9 @@ PRODUCT_PACKAGES += \
     Tag \
     com.android.nfc_extras
 
-# Hostapd (Required for Wi-Fi)
-PRODUCT_PACKAGES += \
-    hostapd_cli \
-    calibrator \
-    hostapd
-
-# US GPS config
-PRODUCT_COPY_FILES += device/common/gps/gps.conf_US:system/etc/gps.conf
-
 # Ramdisk files
 PRODUCT_COPY_FILES += \
+    device/htc/ruby/ramdisk/fstab.ruby:root/fstab.ruby \
     device/htc/ruby/ramdisk/init.qcom.sh:root/init.qcom.sh \
     device/htc/ruby/ramdisk/init.ruby.rc:root/init.ruby.rc \
     device/htc/ruby/ramdisk/init.ruby.usb.rc:root/init.ruby.usb.rc \
@@ -58,6 +53,14 @@ PRODUCT_COPY_FILES += \
     device/htc/ruby/configs/init.qcom.fm.sh:system/etc/init.qcom.fm.sh \
     device/htc/ruby/configs/init.qcom.sdio.sh:system/etc/init.qcom.sdio.sh \
     device/htc/ruby/configs/init.qcom.wifi.sh:system/etc/init.qcom.wifi.sh
+
+    ## recovery and custom charging
+PRODUCT_COPY_FILES += \
+    device/htc/ruby/recovery/root/sbin/choice_fn:recovery/root/sbin/choice_fn \
+    device/htc/ruby/recovery/root/sbin/power_test:recovery/root/sbin/power_test \
+    device/htc/ruby/recovery/root/sbin/offmode_charging:recovery/root/sbin/offmode_charging \
+    device/htc/ruby/recovery/root/sbin/detect_key:recovery/root/sbin/detect_key \
+    device/htc/ruby/recovery/root/sbin/htcbatt:recovery/root/sbin/htcbatt
 
 # Vold
 PRODUCT_COPY_FILES += \
@@ -77,8 +80,7 @@ PRODUCT_COPY_FILES += \
     device/htc/ruby/idc/ruby-keypad.idc:system/usr/idc/ruby-keypad.idc
 
 # QC thermald config
-PRODUCT_COPY_FILES += \
-device/htc/ruby/configs/thermald.conf:system/etc/thermald.conf
+PRODUCT_COPY_FILES += device/htc/ruby/configs/thermald.conf:system/etc/thermald.conf
 
 # Sound configs
 PRODUCT_COPY_FILES += \
@@ -106,50 +108,43 @@ PRODUCT_COPY_FILES += \
     device/htc/ruby/dsp/soundimage/srsfx_trumedia_music.cfg:system/etc/soundimage/srsfx_trumedia_music.cfg \
     device/htc/ruby/dsp/soundimage/srsfx_trumedia_voice.cfg:system/etc/soundimage/srsfx_trumedia_voice.cfg
 
+# Permissions
+PRODUCT_COPY_FILES += \
+    frameworks/native/data/etc/android.hardware.nfc.xml:system/etc/permissions/android.hardware.nfc.xml \
+    frameworks/native/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml \
+    frameworks/native/data/etc/android.hardware.wifi.direct.xml:system/etc/permissions/android.hardware.wifi.direct.xml \
+    frameworks/native/data/etc/com.android.nfc_extras.xml:system/etc/permissions/com.android.nfc_extras.xml
+
 # Custom media config for HTC camera
 PRODUCT_COPY_FILES += \
+    device/htc/msm8660-common/configs/media_codecs.xml:system/etc/media_codecs.xml \
     device/htc/ruby/configs/media_profiles.xml:system/etc/media_profiles.xml
 
-## recovery and custom charging
+# Device Specific Firmware
 PRODUCT_COPY_FILES += \
-    device/htc/ruby/recovery/root/sbin/choice_fn:recovery/root/sbin/choice_fn \
-    device/htc/ruby/recovery/root/sbin/power_test:recovery/root/sbin/power_test \
-    device/htc/ruby/recovery/root/sbin/offmode_charging:recovery/root/sbin/offmode_charging \
-    device/htc/ruby/recovery/root/sbin/detect_key:recovery/root/sbin/detect_key \
-    device/htc/ruby/recovery/root/sbin/htcbatt:recovery/root/sbin/htcbatt
+    device/htc/ruby/firmware/default_bak.acdb:system/etc/firmware/default_bak.acdb \
+    device/htc/ruby/firmware/default_rogers_bak.acdb:system/etc/firmware/default_rogers_bak.acdb
 
-# Firmware (Required for Wi-Fi)
-PRODUCT_COPY_FILES += \
-    device/htc/ruby/firmware/fmc_init_1273.2.bts:system/etc/firmware/fmc_init_1273.2.bts \
-    device/htc/ruby/firmware/fm_rx_init_1273.2.bts:system/etc/firmware/fm_rx_init_1273.2.bts \
-    device/htc/ruby/firmware/leia_pfp_470.fw:system/etc/firmware/leia_pfp_470.fw \
-    device/htc/ruby/firmware/leia_pm4_470.fw:system/etc/firmware/leia_pm4_470.fw \
-    device/htc/ruby/firmware/protocols:system/etc/firmware/protocols \
-    device/htc/ruby/firmware/TIInit_7.6.15.bts:system/etc/firmware/TIInit_7.6.15.bts \
-    device/htc/ruby/firmware/vac_config.ini:system/etc/firmware/vac_config.ini \
-    device/htc/ruby/firmware/version:system/etc/firmware/version \
-    device/htc/ruby/firmware/vidc_1080p.fw:system/etc/firmware/vidc_1080p.fw \
-    device/htc/ruby/firmware/WL127x_2.0_2.25.bts:system/etc/firmware/WL127x_2.0_2.25.bts \
-    device/htc/ruby/firmware/yamato_pfp.fw:system/etc/firmware/yamato_pfp.fw \
-    device/htc/ruby/firmware/yamato_pm4.fw:system/etc/firmware/yamato_pm4.fw 
-
-# ti-connectivity (Required for Wi-Fi)
+# wifi firmware
 PRODUCT_COPY_FILES += \
     device/htc/ruby/firmware/ti-connectivity/wl127x-fw-4-mr.bin:system/etc/firmware/ti-connectivity/wl127x-fw-4-mr.bin \
     device/htc/ruby/firmware/ti-connectivity/wl127x-fw-4-plt.bin:system/etc/firmware/ti-connectivity/wl127x-fw-4-plt.bin \
     device/htc/ruby/firmware/ti-connectivity/wl127x-fw-4-sr.bin:system/etc/firmware/ti-connectivity/wl127x-fw-4-sr.bin \
-    device/htc/ruby/firmware/ti-connectivity/wl1271-nvs.bin:system/etc/firmware/ti-connectivity/wl1271-nvs.bin 
-
-# WiFi & NFC
-PRODUCT_COPY_FILES += \
-    device/htc/ruby/wifi/95-configured:system/etc/dhcpcd-hooks/95-configured \
-    device/htc/ruby/wifi/libpn544_fw.so:system/vendor/firmware/libpn544_fw.so \
-    device/htc/ruby/wifi/libpn544_fw.so:system/lib/libpn544_fw.so \
-    device/htc/ruby/wifi/p2p_supplicant.conf:system/etc/wifi/p2p_supplicant.conf \
-    device/htc/ruby/wifi/p2p_supplicant_manual.conf:system/etc/wifi/p2p_supplicant_manual.conf \
-    device/htc/ruby/wifi/rt_tables:system/etc/iproute2/rt_tables \
-    device/htc/ruby/wifi/TQS_D_1.7.ini:system/etc/wifi/TQS_D_1.7.ini \
-    device/htc/ruby/wifi/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf 
+    device/htc/ruby/firmware/ti-connectivity/wl1271-nvs.bin:system/etc/firmware/ti-connectivity/wl1271-nvs.bin \
+    device/htc/ruby/firmware/fmc_init_1273.2.bts:system/etc/firmware/fmc_init_1273.2.bts \
+    device/htc/ruby/firmware/fm_rx_init_1273.2.bts:system/etc/firmware/fm_rx_init_1273.2.bts \
+    device/htc/ruby/firmware/htc_1271fw.bin:system/etc/firmware/htc_1271fw.bin \
+    device/htc/ruby/firmware/htc_1271fw_196_header.bin:system/etc/firmware/htc_1271fw_196_header.bin \
+    device/htc/ruby/firmware/TIInit_7.6.15.bts:system/etc/firmware/TIInit_7.6.15.bts \
+    device/htc/ruby/firmware/WL127x_2.0_2.25.bts:system/etc/firmware/WL127x_2.0_2.25.bts \
+    device/htc/ruby/firmware/vac_config.ini:system/etc/firmware/vac_config.ini \
+    device/htc/ruby/firmware/version:system/etc/firmware/version \
+    device/htc/ruby/wifi/firmware.bin:system/etc/wifi/firmware.bin \
+    device/htc/ruby/wifi/firmware_ap.bin:system/etc/wifi/firmware_ap.bin \
+    device/htc/ruby/wifi/hostapd.conf:system/etc/wifi/hostapd.conf \
+    device/htc/ruby/wifi/tiwlan.ini:system/etc/wifi/tiwlan.ini \
+    device/htc/ruby/wifi/tiwlan_ap.ini:system/etc/wifi/tiwlan_ap.ini \
+    device/htc/ruby/wifi/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf
 
 # misc
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -166,13 +161,6 @@ PRODUCT_COPY_FILES += $(shell \
     | tr '\n' ' ')
 endif
 
-# Permissions
-PRODUCT_COPY_FILES += \
-    frameworks/base/data/etc/android.hardware.nfc.xml:system/etc/permissions/android.hardware.nfc.xml \
-    frameworks/base/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml \
-    frameworks/base/data/etc/android.hardware.wifi.direct.xml:system/etc/permissions/android.hardware.wifi.direct.xml \
-    frameworks/base/nfc-extras/com.android.nfc_extras.xml:system/etc/permissions/com.android.nfc_extras.xml
-
 # call proprietary setup
 $(call inherit-product-if-exists, vendor/htc/ruby/ruby-vendor.mk)# media profiles and capabilities spec
 
@@ -180,4 +168,4 @@ $(call inherit-product-if-exists, vendor/htc/ruby/ruby-vendor.mk)# media profile
 $(call inherit-product, device/htc/ruby/media_a1026.mk)
 $(call inherit-product, device/htc/ruby/media_htcaudio.mk)
 
-$(call inherit-product, frameworks/base/build/phone-xhdpi-1024-dalvik-heap.mk)
+$(call inherit-product, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
