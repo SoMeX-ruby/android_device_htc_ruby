@@ -15,7 +15,7 @@
 #
 
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
-$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base.mk)
 
 # common msm8660 configs
 $(call inherit-product, device/htc/msm8660-common/msm8660.mk)
@@ -149,7 +149,8 @@ PRODUCT_COPY_FILES += \
     device/htc/ruby/wifi/p2p_supplicant_manual.conf:system/etc/wifi/p2p_supplicant_manual.conf \
     device/htc/ruby/wifi/rt_tables:system/etc/iproute2/rt_tables \
     device/htc/ruby/wifi/TQS_D_1.7.ini:system/etc/wifi/TQS_D_1.7.ini \
-    device/htc/ruby/wifi/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf 
+    device/htc/ruby/wifi/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf \
+    device/htc/ruby/wifi/libwpa_client.so:obj/lib/libwpa_client.so 
 
 # misc
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -166,6 +167,13 @@ PRODUCT_COPY_FILES += $(shell \
     | tr '\n' ' ')
 endif
 
+# Kernel
+ifeq ($(TARGET_PREBUILT_KERNEL),)
+LOCAL_KERNEL := device/htc/ruby/prebuilt/kernel
+else
+LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
+endif
+
 # Permissions
 PRODUCT_COPY_FILES += \
     frameworks/base/data/etc/android.hardware.nfc.xml:system/etc/permissions/android.hardware.nfc.xml \
@@ -179,5 +187,3 @@ $(call inherit-product-if-exists, vendor/htc/ruby/ruby-vendor.mk)# media profile
 # htc audio settings
 $(call inherit-product, device/htc/ruby/media_a1026.mk)
 $(call inherit-product, device/htc/ruby/media_htcaudio.mk)
-
-$(call inherit-product, frameworks/base/build/phone-xhdpi-1024-dalvik-heap.mk)

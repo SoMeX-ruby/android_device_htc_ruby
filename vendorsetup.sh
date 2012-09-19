@@ -16,4 +16,4 @@
 
 add_lunch_combo full_ruby-eng
 add_lunch_combo full_ruby-userdebug
-add_lunch_combo cm_ruby-userdebug
+add_lunch_combo cyanogen_ruby-eng

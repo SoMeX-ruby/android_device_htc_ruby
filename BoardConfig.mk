@@ -34,27 +34,7 @@ TARGET_BOOTLOADER_BOARD_NAME := ruby
 BOARD_KERNEL_BASE := 0x48000000
 BOARD_KERNEL_CMDLINE := console=ttyHSL3 androidboot.hardware=ruby no_console_suspend=1
 BOARD_KERNEL_PAGE_SIZE := 2048
-TARGET_KERNEL_CONFIG := ruby_defconfig
 TARGET_PREBUILT_KERNEL := device/htc/ruby/prebuilt/kernel
-
-# over rides
-WIFI_BAND:=
-WIFI_DRIVER_FW_PATH_AP:=
-WIFI_DRIVER_FW_PATH_P2P:=
-WIFI_DRIVER_FW_PATH_STA:=
-WIFI_DRIVER_FW_PATH_PARAM:=
-# end over rides
-# Wifi
-BOARD_WPA_SUPPLICANT_DRIVER      := NL80211
-WPA_SUPPLICANT_VERSION           := VER_0_8_X
-BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_wl12xx
-BOARD_HOSTAPD_DRIVER             := NL80211
-BOARD_HOSTAPD_PRIVATE_LIB        := lib_driver_cmd_wl12xx
-BOARD_WLAN_DEVICE                := wl12xx_mac80211
-BOARD_SOFTAP_DEVICE              := wl12xx_mac80211
-WIFI_DRIVER_MODULE_PATH          := "/system/lib/modules/wl12xx_sdio.ko"
-WIFI_DRIVER_MODULE_NAME          := "wl12xx_sdio"
-WIFI_FIRMWARE_LOADER             := ""
 
 # QCOM Display
 TARGET_USES_OVERLAY := false
