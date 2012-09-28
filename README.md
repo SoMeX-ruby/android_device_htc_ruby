@@ -10,9 +10,10 @@ Working:
 * GSM
 * Wi-Fi
 * Bluetooth
+* Camera
+* Gps
+* Touchscreen
 * Other
 
 Known issues:
 * Data
-* Camera
-* Gps
