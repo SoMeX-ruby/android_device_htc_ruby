@@ -5,7 +5,6 @@
 ro.sf.lcd_density=240
 
 # RIL properties
-mobiledata.interfaces=rmnet0
 ro.telephony.default_network=0
 ro.telephony.ril_class=HTCQualcommRIL
 telephony.lteOnGsmDevice=1
