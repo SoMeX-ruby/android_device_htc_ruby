@@ -80,3 +80,5 @@ BOARD_VOLD_EMMC_SHARES_DEV_MAJOR := true
 # Recovery
 BOARD_USES_MMCUTILS := true
 BOARD_HAS_NO_SELECT_BUTTON := true
+#BOARD_TOUCH_RECOVERY := true (Not Open Source *mad*)
+TARGET_RECOVERY_INITRC := device/htc/ruby/recovery/root/init.rc
