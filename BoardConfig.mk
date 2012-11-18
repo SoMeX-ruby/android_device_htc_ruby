@@ -27,6 +27,8 @@
 # inherit from msm8660-common
 -include device/htc/msm8660-common/BoardConfigCommon.mk
 
+TARGET_SPECIFIC_HEADER_PATH := device/htc/ruby/include
+
 # Bootloader
 TARGET_BOOTLOADER_BOARD_NAME := ruby
 
@@ -57,9 +59,6 @@ WIFI_DRIVER_FW_PATH_PARAM:=
 
 # QCOM GPS
 BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE := ruby
-
-# Ril
-BOARD_PROVIDES_LIBRIL := true
 
 # NFC
 BOARD_HAVE_NFC := true
