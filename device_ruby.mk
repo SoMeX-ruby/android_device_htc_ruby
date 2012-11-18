@@ -150,6 +150,11 @@ PRODUCT_COPY_FILES += $(shell \
     | tr '\n' ' ')
 endif
 
+PRODUCT_NAME := full_ruby
+PRODUCT_DEVICE := ruby
+PRODUCT_BRAND := Android
+PRODUCT_MODEL := Full AOSP on Ruby
+
 # call proprietary setup
 $(call inherit-product-if-exists, vendor/htc/ruby/ruby-vendor.mk)
 
