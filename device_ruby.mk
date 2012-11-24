@@ -150,11 +150,6 @@ PRODUCT_COPY_FILES += $(shell \
     | tr '\n' ' ')
 endif
 
-PRODUCT_NAME := full_ruby
-PRODUCT_DEVICE := ruby
-PRODUCT_BRAND := Android
-PRODUCT_MODEL := Full AOSP on Ruby
-
 # call proprietary setup
 $(call inherit-product-if-exists, vendor/htc/ruby/ruby-vendor.mk)
 
@@ -163,3 +158,10 @@ $(call inherit-product, device/htc/ruby/media_a1026.mk)
 $(call inherit-product, device/htc/ruby/media_htcaudio.mk)
 
 $(call inherit-product, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
+
+# Discard inherited values and use our own instead.
+PRODUCT_DEVICE := ruby
+PRODUCT_NAME := ruby
+PRODUCT_BRAND := htc
+PRODUCT_MODE := Amaze 4G
+PRODUCT_MANUFACTURER := HTC
