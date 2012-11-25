@@ -229,6 +229,11 @@ service dhcpcd_wlan0 /system/bin/dhcpcd -ABKL
     disabled
     oneshot
 
+service dmagent /system/bin/dmagent -N
+    socket dmagent stream 660 root radio
+    user root
+    group radio cache inet misc
+
 service ewtzmud /system/bin/ewtzmud
     class core
     user system
