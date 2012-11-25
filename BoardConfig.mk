@@ -33,6 +33,7 @@ TARGET_SPECIFIC_HEADER_PATH := device/htc/ruby/include
 TARGET_BOOTLOADER_BOARD_NAME := ruby
 
 # Kernel
+TARGET_PREBUILT_KERNEL := device/htc/ruby/prebuilt/kernel
 BOARD_KERNEL_BASE := 0x48000000
 BOARD_KERNEL_CMDLINE := console=ttyHSL3 androidboot.hardware=ruby no_console_suspend=1
 BOARD_KERNEL_PAGE_SIZE := 2048
