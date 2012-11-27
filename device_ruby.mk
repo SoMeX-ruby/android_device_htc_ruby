@@ -53,11 +53,8 @@ PRODUCT_COPY_FILES += \
     device/htc/ruby/firmware/WL127x_2.0_2.25.bts:system/etc/firmware/WL127x_2.0_2.25.bts \
     device/htc/ruby/firmware/vac_config.ini:system/etc/firmware/vac_config.ini \
     device/htc/ruby/firmware/version:system/etc/firmware/version \
-    device/htc/ruby/wifi/firmware.bin:system/etc/wifi/firmware.bin \
-    device/htc/ruby/wifi/firmware_ap.bin:system/etc/wifi/firmware_ap.bin \
     device/htc/ruby/wifi/hostapd.conf:system/etc/wifi/hostapd.conf \
-    device/htc/ruby/wifi/tiwlan.ini:system/etc/wifi/tiwlan.ini \
-    device/htc/ruby/wifi/tiwlan_ap.ini:system/etc/wifi/tiwlan_ap.ini \
+    device/htc/ruby/wifi/TQS_D_1.7.ini:system/etc/wifi/TQS_D_1.7.ini \
     device/htc/ruby/wifi/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf
 
 # QC thermald config
