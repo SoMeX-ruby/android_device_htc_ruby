@@ -26,7 +26,6 @@
 
 # inherit from msm8660-common
 -include device/htc/msm8660-common/BoardConfigCommon.mk
--include device/htc/msm8660-common/bcmdhd.mk
 
 # Bootloader
 TARGET_BOOTLOADER_BOARD_NAME := ruby
