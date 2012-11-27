@@ -40,6 +40,12 @@ PRODUCT_PACKAGES += \
 
 # Hostapd (Required for Wi-Fi)
 PRODUCT_PACKAGES += \
+PRODUCT_PACKAGES += \
+    hostapd.conf \
+    dhcpcd.conf \
+    TQS_D_1.7.ini \
+    wpa_supplicant.conf \
+    calibrator \
     hostapd_cli \
     hostapd
 
@@ -68,8 +74,6 @@ PRODUCT_COPY_FILES += \
     device/htc/ruby/wifi/p2p_supplicant.conf:system/etc/wifi/p2p_supplicant.conf \
     device/htc/ruby/wifi/p2p_supplicant_manual.conf:system/etc/wifi/p2p_supplicant_manual.conf \
     device/htc/ruby/wifi/rt_tables:system/etc/iproute2/rt_tables \
-    device/htc/ruby/wifi/TQS_D_1.7.ini:system/etc/wifi/TQS_D_1.7.ini \
-    device/htc/ruby/wifi/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf 
 
 # Ramdisk files
 PRODUCT_COPY_FILES += \
