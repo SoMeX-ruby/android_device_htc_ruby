@@ -40,7 +40,6 @@ PRODUCT_PACKAGES += \
 
 # Hostapd (Required for Wi-Fi)
 PRODUCT_PACKAGES += \
-PRODUCT_PACKAGES += \
     hostapd.conf \
     dhcpcd.conf \
     TQS_D_1.7.ini \
