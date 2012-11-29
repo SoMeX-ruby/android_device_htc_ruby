@@ -27,6 +27,16 @@ PRODUCT_PACKAGES += \
     gps.ruby \
     lights.ruby
 
+# Hostapd
+PRODUCT_PACKAGES += \
+    hostapd.conf \
+    dhcpcd.conf \
+    TQS_D_1.7.ini \
+    wpa_supplicant.conf \
+    calibrator \
+    hostapd_cli \
+    hostapd
+
 ## The gps config appropriate for this device
 PRODUCT_COPY_FILES += \
     device/common/gps/gps.conf_EU:system/etc/gps.conf
@@ -39,23 +49,23 @@ PRODUCT_PACKAGES += \
     Tag \
     com.android.nfc_extras
 
-# wifi firmware
+# ti-connectivity
 PRODUCT_COPY_FILES += \
+    device/htc/ruby/firmware/ti-connectivity/wl1271-nvs.bin:system/etc/firmware/ti-connectivity/wl1271-nvs.bin \
     device/htc/ruby/firmware/ti-connectivity/wl127x-fw-4-mr.bin:system/etc/firmware/ti-connectivity/wl127x-fw-4-mr.bin \
     device/htc/ruby/firmware/ti-connectivity/wl127x-fw-4-plt.bin:system/etc/firmware/ti-connectivity/wl127x-fw-4-plt.bin \
-    device/htc/ruby/firmware/ti-connectivity/wl127x-fw-4-sr.bin:system/etc/firmware/ti-connectivity/wl127x-fw-4-sr.bin \
-    device/htc/ruby/firmware/ti-connectivity/wl1271-nvs.bin:system/etc/firmware/ti-connectivity/wl1271-nvs.bin \
+    device/htc/ruby/firmware/ti-connectivity/wl127x-fw-4-sr.bin:system/etc/firmware/ti-connectivity/wl127x-fw-4-sr.bin 
+
+# Firmware
+PRODUCT_COPY_FILES += \
     device/htc/ruby/firmware/fmc_init_1273.2.bts:system/etc/firmware/fmc_init_1273.2.bts \
     device/htc/ruby/firmware/fm_rx_init_1273.2.bts:system/etc/firmware/fm_rx_init_1273.2.bts \
-    device/htc/ruby/firmware/htc_1271fw.bin:system/etc/firmware/htc_1271fw.bin \
-    device/htc/ruby/firmware/htc_1271fw_196_header.bin:system/etc/firmware/htc_1271fw_196_header.bin \
+    device/htc/ruby/firmware/protocols:system/etc/firmware/protocols \
     device/htc/ruby/firmware/TIInit_7.6.15.bts:system/etc/firmware/TIInit_7.6.15.bts \
-    device/htc/ruby/firmware/WL127x_2.0_2.25.bts:system/etc/firmware/WL127x_2.0_2.25.bts \
     device/htc/ruby/firmware/vac_config.ini:system/etc/firmware/vac_config.ini \
     device/htc/ruby/firmware/version:system/etc/firmware/version \
-    device/htc/ruby/wifi/hostapd.conf:system/etc/wifi/hostapd.conf \
-    device/htc/ruby/wifi/TQS_D_1.7.ini:system/etc/wifi/TQS_D_1.7.ini \
-    device/htc/ruby/wifi/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf
+    device/htc/ruby/firmware/WL127x_2.0_2.25.bts:system/etc/firmware/WL127x_2.0_2.25.bts
+
 
 # QC thermald config
 PRODUCT_COPY_FILES += \
@@ -136,6 +146,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     device/htc/ruby/firmware/default_bak.acdb:system/etc/firmware/default_bak.acdb \
     device/htc/ruby/firmware/default_rogers_bak.acdb:system/etc/firmware/default_rogers_bak.acdb
+
+# DHPCD
+PRODUCT_COPY_FILES += \
+    device/htc/ruby/configs/95-configured:system/etc/dhcpcd-hooks/95-configured
 
 # Kernel modules
 ifeq ($(TARGET_PREBUILT_KERNEL),)
