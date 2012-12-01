@@ -73,6 +73,8 @@ on emmc-fs
 
     mkdir /vendor/etc 0771 system system
     symlink /system/vendor/etc/audio_effects.conf /vendor/etc/audio_effects.conf
+    mkdir /data/misc 1771 system misc
+    symlink /system/etc/wifi/wpa_supplicant.conf /data/misc/wifi/wpa_supplicant.conf
 
 on post-fs-data
     # double check the perms and set owner
@@ -102,7 +104,6 @@ on boot
     chmod 0660                /sys/class/rfkill/rfkill0/state
 
     # wifi
-    mkdir /data/misc 01771 system misc
     mkdir /data/misc/wifi 0770 wifi wifi
     mkdir /data/misc/wifi/sockets 0770 wifi wifi
     mkdir /data/misc/dhcp 0770 dhcp dhcp
@@ -116,6 +117,7 @@ on boot
     insmod /system/lib/modules/cfg80211.ko
     insmod /system/lib/modules/mac80211.ko
     insmod /system/lib/modules/wl12xx.ko debug_level=0x63c00
+    insmod /system/lib/modules/wl12xx_sdio.ko
 
     # for modem link
     chown system system /sys/module/serial/parameters/modem_enabled
