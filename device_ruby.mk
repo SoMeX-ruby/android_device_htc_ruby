@@ -22,24 +22,9 @@ $(call inherit-product, device/htc/msm8660-common/msm8660.mk)
 
 DEVICE_PACKAGE_OVERLAYS += device/htc/ruby/overlay
 
-# GPS and Light
+# GPS
 PRODUCT_PACKAGES += \
-    gps.ruby \
-    lights.ruby
-
-# Hostapd
-PRODUCT_PACKAGES += \
-    hostapd.conf \
-    dhcpcd.conf \
-    TQS_D_1.7.ini \
-    wpa_supplicant.conf \
-    calibrator \
-    hostapd_cli \
-    hostapd
-
-## The gps config appropriate for this device
-PRODUCT_COPY_FILES += \
-    device/common/gps/gps.conf_EU:system/etc/gps.conf
+    gps.ruby
 
 # NFC
 PRODUCT_PACKAGES += \
@@ -49,27 +34,31 @@ PRODUCT_PACKAGES += \
     Tag \
     com.android.nfc_extras
 
-# ti-connectivity
+# Wifi
+PRODUCT_PACKAGES += \
+    dhcpcd.conf \
+    hostapd.conf \
+    wpa_supplicant.conf \
+    tiwlan.ini \
+    TQS_D_1.7.ini \
+    TQS_D_1.7_127x.ini
+
+# wifi firmware
 PRODUCT_COPY_FILES += \
-    device/htc/ruby/firmware/ti-connectivity/wl1271-nvs.bin:system/etc/firmware/ti-connectivity/wl1271-nvs.bin \
     device/htc/ruby/firmware/ti-connectivity/wl127x-fw-4-mr.bin:system/etc/firmware/ti-connectivity/wl127x-fw-4-mr.bin \
     device/htc/ruby/firmware/ti-connectivity/wl127x-fw-4-plt.bin:system/etc/firmware/ti-connectivity/wl127x-fw-4-plt.bin \
-    device/htc/ruby/firmware/ti-connectivity/wl127x-fw-4-sr.bin:system/etc/firmware/ti-connectivity/wl127x-fw-4-sr.bin 
-
-# Firmware
-PRODUCT_COPY_FILES += \
+    device/htc/ruby/firmware/ti-connectivity/wl127x-fw-4-sr.bin:system/etc/firmware/ti-connectivity/wl127x-fw-4-sr.bin \
+    device/htc/ruby/firmware/ti-connectivity/wl1271-nvs.bin:system/etc/firmware/ti-connectivity/wl1271-nvs.bin \
     device/htc/ruby/firmware/fmc_init_1273.2.bts:system/etc/firmware/fmc_init_1273.2.bts \
     device/htc/ruby/firmware/fm_rx_init_1273.2.bts:system/etc/firmware/fm_rx_init_1273.2.bts \
-    device/htc/ruby/firmware/protocols:system/etc/firmware/protocols \
+    device/htc/ruby/firmware/htc_1271fw.bin:system/etc/firmware/htc_1271fw.bin \
+    device/htc/ruby/firmware/htc_1271fw_196_header.bin:system/etc/firmware/htc_1271fw_196_header.bin \
     device/htc/ruby/firmware/TIInit_7.6.15.bts:system/etc/firmware/TIInit_7.6.15.bts \
+    device/htc/ruby/firmware/WL127x_2.0_2.25.bts:system/etc/firmware/WL127x_2.0_2.25.bts \
     device/htc/ruby/firmware/vac_config.ini:system/etc/firmware/vac_config.ini \
     device/htc/ruby/firmware/version:system/etc/firmware/version \
-    device/htc/ruby/firmware/WL127x_2.0_2.25.bts:system/etc/firmware/WL127x_2.0_2.25.bts
-
-
-# QC thermald config
-PRODUCT_COPY_FILES += \
-    device/htc/ruby/configs/thermald.conf:system/etc/thermald.conf
+    device/htc/ruby/firmware/firmware.bin:system/etc/wifi/firmware.bin \
+    device/htc/ruby/firmware/firmware_ap.bin:system/etc/wifi/firmware_ap.bin
 
 # Ramdisk files
 PRODUCT_COPY_FILES += \
@@ -136,28 +125,6 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml \
     frameworks/native/data/etc/android.hardware.wifi.direct.xml:system/etc/permissions/android.hardware.wifi.direct.xml \
     frameworks/native/data/etc/com.android.nfc_extras.xml:system/etc/permissions/com.android.nfc_extras.xml
-
-# Custom media config for HTC camera
-PRODUCT_COPY_FILES += \
-    device/htc/msm8660-common/configs/media_codecs.xml:system/etc/media_codecs.xml \
-    device/htc/msm8660-common/configs/media_profiles.xml:system/etc/media_profiles.xml
-
-# acdb config
-PRODUCT_COPY_FILES += \
-    device/htc/ruby/firmware/default_bak.acdb:system/etc/firmware/default_bak.acdb \
-    device/htc/ruby/firmware/default_rogers_bak.acdb:system/etc/firmware/default_rogers_bak.acdb
-
-# DHPCD
-PRODUCT_COPY_FILES += \
-    device/htc/ruby/configs/95-configured:system/etc/dhcpcd-hooks/95-configured
-
-# Kernel modules
-ifeq ($(TARGET_PREBUILT_KERNEL),)
-PRODUCT_COPY_FILES += $(shell \
-    find device/htc/ruby/modules -name '*.ko' \
-    | sed -r 's/^\/?(.*\/)([^/ ]+)$$/\1\2:system\/lib\/modules\/\2/' \
-    | tr '\n' ' ')
-endif
 
 # misc
 PRODUCT_PROPERTY_OVERRIDES += \
