@@ -139,7 +139,7 @@ PRODUCT_COPY_FILES += $(shell \
     find device/htc/ruby/modules -name '*.ko' \
     | sed -r 's/^\/?(.*\/)([^/ ]+)$$/\1\2:system\/lib\/modules\/\2/' \
     | tr '\n' ' ')
-endif
+fi
 
 # call proprietary setup
 $(call inherit-product-if-exists, vendor/htc/ruby/ruby-vendor.mk)
