@@ -134,12 +134,12 @@ PRODUCT_PROPERTY_OVERRIDES += \
     dalvik.vm.dexopt-flags=m=y
 
 # Kernel
-if [[ $(md5sum out/target/product/ruby/kernel | awk '{print $1}') = $MD5SUM ]]; then
+ifeq [[ $(md5sum out/target/product/ruby/kernel | awk '{print $1}') = $MD5SUM ]]; then
 PRODUCT_COPY_FILES += $(shell \
     find device/htc/ruby/modules -name '*.ko' \
     | sed -r 's/^\/?(.*\/)([^/ ]+)$$/\1\2:system\/lib\/modules\/\2/' \
     | tr '\n' ' ')
-fi
+endif
 
 # call proprietary setup
 $(call inherit-product-if-exists, vendor/htc/ruby/ruby-vendor.mk)
