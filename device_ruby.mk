@@ -22,9 +22,10 @@ $(call inherit-product, device/htc/msm8660-common/msm8660.mk)
 
 DEVICE_PACKAGE_OVERLAYS += device/htc/ruby/overlay
 
-# GPS
+# GPS & Lights
 PRODUCT_PACKAGES += \
-    gps.ruby
+    gps.ruby \
+    lights.ruby
 
 # NFC
 PRODUCT_PACKAGES += \
