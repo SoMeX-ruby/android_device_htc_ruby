@@ -44,8 +44,10 @@ PRODUCT_PACKAGES += \
     TQS_D_1.7_127x.ini \
     calibrator
 
-# wifi firmware
+# Firmware
 PRODUCT_COPY_FILES += \
+    device/htc/ruby/firmware/default_bak.acdb:system/etc/firmware/default_bak.acdb \
+    device/htc/ruby/firmware/default_rogers_bak.acdb:system/etc/firmware/default_rogers_bak.acdb \
     device/htc/ruby/firmware/ti-connectivity/wl127x-fw-4-mr.bin:system/etc/firmware/ti-connectivity/wl127x-fw-4-mr.bin \
     device/htc/ruby/firmware/ti-connectivity/wl127x-fw-4-plt.bin:system/etc/firmware/ti-connectivity/wl127x-fw-4-plt.bin \
     device/htc/ruby/firmware/ti-connectivity/wl127x-fw-4-sr.bin:system/etc/firmware/ti-connectivity/wl127x-fw-4-sr.bin \
