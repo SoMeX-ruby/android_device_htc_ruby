@@ -97,9 +97,14 @@ on boot
     chown system system /sys/devices/platform/msm_sdcc.4/polling
 
     # bluetooth power up/down interface
-    chown bluetooth bluetooth /sys/class/rfkill/rfkill0/type
-    chown bluetooth bluetooth /sys/class/rfkill/rfkill0/state
-    chmod 0660                /sys/class/rfkill/rfkill0/state
+echo 1 > /sys/class/rfkill0/state
+echo 1 > /sys/class/rfkill1/state
+chown bluetooth bluetooth /sys/class/rfkill/rfkill0/type
+chown bluetooth bluetooth /sys/class/rfkill/rfkill0/state
+chmod 0660 /sys/class/rfkill/rfkill0/state
+chown bluetooth bluetooth /sys/class/rfkill/rfkill1/type
+chown bluetooth bluetooth /sys/class/rfkill/rfkill1/state
+chmod 0660 /sys/class/rfkill/rfkill1/state
 
     # wifi
     mkdir /data/misc 1771 system misc
