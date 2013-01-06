@@ -1,0 +1,9 @@
+#!/system/bin/sh
+modprobe wl12xx
+modprobe btwilink
+## Turn 'on' all radios at startup, so service-processes can associate properly
+for i in /sys/class/rfkill/*
+do
+echo $i
+echo 1 > $i/state
+done

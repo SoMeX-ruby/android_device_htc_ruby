@@ -77,6 +77,11 @@ PRODUCT_COPY_FILES += \
     device/htc/ruby/recovery/root/sbin/detect_key:recovery/root/sbin/detect_key \
     device/htc/ruby/recovery/root/sbin/htcbatt:recovery/root/sbin/htcbatt
 
+# Scripts
+PRODUCT_COPY_FILES += \
+    device/htc/ruby/scripts/01bluetooth/:system/etc/init.d/01bluetooth \
+    device/htc/ruby/scripts/modules.dep:system/lib/modules/modules.dep
+
 # Vold
 PRODUCT_COPY_FILES += \
     device/htc/ruby/vold.fstab:system/etc/vold.fstab
