@@ -74,6 +74,9 @@ BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE := ruby
 # NFC
 BOARD_HAVE_NFC := true
 
+# Bluetooth
+BOARD_WPAN_DEVICE := true
+
 # Use libril in the device tree
 BOARD_PROVIDES_LIBRIL := true
 
