@@ -79,8 +79,7 @@ PRODUCT_COPY_FILES += \
 
 # Scripts
 PRODUCT_COPY_FILES += \
-    device/htc/ruby/scripts/01bluetooth:system/etc/init.d/01bluetooth \
-    device/htc/ruby/scripts/modules.dep:system/lib/modules/modules.dep
+    device/htc/ruby/scripts/01bluetooth:system/etc/init.d/01bluetooth
 
 # Vold
 PRODUCT_COPY_FILES += \
