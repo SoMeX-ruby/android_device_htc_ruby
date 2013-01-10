@@ -84,8 +84,8 @@ lib/libwvdrm_L3.so
 lib/libwvm.so
 lib/libWVphoneAPI.so
 lib/libWVStreamControlAPI_L3.so
-lib/libdrmwvmplugin.so
-lib/libhtcomaplugin.so
+lib/drm/libdrmwvmplugin.so
+lib/drm/libhtcomaplugin.so
 
 # NFC
 lib/hw/nfc.ruby.so
