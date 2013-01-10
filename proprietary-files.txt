@@ -67,10 +67,25 @@ lib/libsc-a2xx.so
 
 # Misc libraries
 lib/libdsm.so
-
 lib/libmm-color-convertor.so
 lib/liboncrpc.so
 lib/libpbmlib.so
+lib/libcneapiclient.so
+lib/libcneqmiutils.so
+lib/libdnshostprio.so
+
+# Video Decoding
+lib/libDivxDrm.so
+lib/libmm-color-convertor.so
+lib/libmmosal.so
+lib/libmmparser.so
+lib/libmmparser_divxdrmlib.so
+lib/libwvdrm_L3.so
+lib/libwvm.so
+lib/libWVphoneAPI.so
+lib/libWVStreamControlAPI_L3.so
+lib/libdrmwvmplugin.so
+lib/libhtcomaplugin.so
 
 # NFC
 lib/hw/nfc.ruby.so
