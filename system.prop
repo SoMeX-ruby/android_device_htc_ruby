@@ -5,124 +5,14 @@
 ro.sf.lcd_density=240
 
 # RIL properties
-ro.telephony.default_network=0
-DEVICE_PROVISIONED=1
-ro.vendor.extension_library=/system/lib/libqc-opt.so
-ro.baseband.arch=msm
-mobiledata.interfaces=rmnet_sdio0,rmnet_sdio1,wlan0
+mobiledata.interfaces=rmnet_sdio0
 rild.libpath=/system/lib/libril-qc-qmi-1.so
 rild.libargs=-d /dev/smd0
-ril.subscription.types=NV,RUIM
-DEVICE_PROVISIONED=1
-ro.telephony.ril_class=HTCQualcommUiccRIL
-ro.telephony.ril.v3=facilitylock,datacall,signalstrength,icccardstatus,singlepdp,qcomuiccstack
-
-ro.ril.ecc.HTC-GCC=999,112,997
-ro.ril.ecc.HTC-WWE=999
-ro.ril.ecc.HTC-Dutch=112
-ro.ril.ecc.HTC-FRA=112
-ro.ril.ecc.HTC-ITA=112,911
-ro.ril.ecc.HTC-EastEurope=112
-ro.ril.enable.a52.HTC-ITA=1
-ro.ril.enable.a53.HTC-ITA=1
-ro.ril.enable.a52=0
-ro.ril.enable.a53=1
-
-ro.ril.fast.dormancy.rule=1
-ro.ril.disable.fd.plmn.prefix=23402,23410,23411,23420
-ro.ril.enable.sdr=1
-ro.ril.enable.amr.wideband=0
-
-# Modify MMS APN retry timer from 5s to 2s.
-ro.gsm.2nd_data_retry_config=max_retries=3, 2000, 2000, 2000
-
-# ruby RF team request
-ro.ril.enable.dtm=0
-ro.ril.gprsclass=12
-ro.ril.hsdpa.category=10
-ro.ril.hsupa.category=6
-ro.ril.hsxpa=3
-
-# Default network type.
-# 0 => WCDMA preferred.
-ro.telephony.default_network=0
-
-# Modify MTU from 1500 to 1472 on 3G network
-ro.ril.set.mtu1472=1
-
-# For HSDPA low throughput
-ro.ril.disable.power.collapse=1
-
-# For China NEL
-ro.ril.enable.prl.recognition=1
-persist.rild.nitz_plmn=
-persist.rild.nitz_long_ons_0=
-persist.rild.nitz_long_ons_1=
-persist.rild.nitz_long_ons_2=
-persist.rild.nitz_long_ons_3=
-persist.rild.nitz_short_ons_0=
-persist.rild.nitz_short_ons_1=
-persist.rild.nitz_short_ons_2=
-persist.rild.nitz_short_ons_3=
-persist.cne.UseCne=none
-persist.cne.UseSwim=false
-persist.cne.bat.range.low.med=30
-persist.cne.bat.range.med.high=60
-persist.cne.loc.policy.op=/system/etc/OperatorPolicy.xml
-persist.cne.loc.policy.user=/system/etc/UserPolicy.xml
-persist.cne.bwbased.rat.sel=false
-persist.cne.snsr.based.rat.mgt=false
-persist.cne.bat.based.rat.mgt=false
-persist.cne.rat.acq.time.out=30000
-persist.cne.rat.acq.retry.tout=0
-persist.cne.nsrm.mode=false
-ro.use_data_netmgrd=true
-
-# graphics
-debug.composition.type=dyn
-debug.enabletr=true
-debug.sf.hw=1
-ro.opengles.version=131072
-ro.sf.compbypass.enable=1
-
-# hdmi
-com.qc.hardware=true
-com.qc.hdmi_out=true
-
-# qcom cpugovernor service
-dev.pm.dyn_samplingrate=1
+ro.telephony.ril_class=HTCQualcommRIL
+ro.vendor.extension_library=/system/lib/libqc-opt.so
 
 # wifi
 wifi.interface=wlan0
-wifi.softap.interface=wlan1
-wifi.softapconcurrent.interface=wlan1
-init.svc.wpa_supplicant=
-init.svc.dhcpcd_wlan0=
-dhcp.wlan0.autoip=
-dhcp.wlan0.dns1=
-dhcp.wlan0.dns2=
-dhcp.wlan0.dns3=
-dhcp.wlan0.dns4=
-dhcp.wlan0.gateway=
-dhcp.wlan0.ipaddress=
-dhcp.wlan0.leasetime=
-dhcp.wlan0.mask=
-dhcp.wlan0.ooxx=
-dhcp.wlan0.pid=
-dhcp.wlan0.reason=
-dhcp.wlan0.result=
-dhcp.wlan0.server=
-net.wlan0.dns1=
-net.wlan0.dns2=
-wifi.wpa_supp_ready=
-wlan.driver.status=
-
-# data module
-ro.use_data_netmgrd=true
-persist.data_netmgrd_mtu=1440
-
-# system property for thermald
-persist.thermal.monitor=true
 
 # UMS
 persist.sys.usb.config=mass_storage,adb
