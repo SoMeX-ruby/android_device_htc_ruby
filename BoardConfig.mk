@@ -78,7 +78,7 @@ BOARD_HAVE_NFC := true
 BOARD_WPAN_DEVICE := true
 
 # Use libril in the device tree
-#BOARD_PROVIDES_LIBRIL := true
+BOARD_PROVIDES_LIBRIL := true
 
 # Filesystem
 TARGET_USERIMAGES_USE_EXT4 := true
