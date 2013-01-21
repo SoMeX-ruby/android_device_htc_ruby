@@ -10,7 +10,7 @@ Phone_TTY,/system/etc/soundimage/Sound_Phone_Original_HP.txt
 ## Group for playback ## 
 Playback_Default,/system/etc/soundimage/Sound_Original.txt
 Playback_Speaker_Default,/system/etc/soundimage/Sound_Original_SPK.txt
-Playback_Headset_Beats,/system/etc/soundimage/Sound_Beats.txt
+Playback_Headset_Beats,
 
 ## Group for recording ##
 Record_Default,/system/etc/soundimage/Sound_Original_Recording.txt
