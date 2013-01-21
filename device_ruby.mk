@@ -63,6 +63,11 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     device/htc/ruby/vold.fstab:system/etc/vold.fstab
 
+# libwpa_client
+PRODUCT_COPY_FILES += \
+    device/htc/ruby/prebuilt/libwpa_client.so:obj/lib/libwpa_client.so \
+    device/htc/ruby/prebuilt/libwpa_client.so:system/lib/libwpa_client.so
+
 # Keylayouts and Keychars
 PRODUCT_COPY_FILES += \
     device/htc/ruby/keychars/ruby-keypad.kcm:system/usr/keychars/ruby-keypad.kcm \
