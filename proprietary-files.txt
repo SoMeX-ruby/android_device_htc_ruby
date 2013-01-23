@@ -58,7 +58,6 @@ lib/egl/eglsubAndroid.so
 lib/egl/libEGL_adreno200.so
 lib/egl/libGLESv1_CM_adreno200.so
 lib/egl/libGLESv2_adreno200.so
-lib/egl/libGLESv2S3D_adreno200.so
 lib/egl/libq3dtools_adreno200.so
 lib/libC2D2.so
 lib/libc2d2_z180.so
@@ -67,18 +66,33 @@ lib/libOpenVG.so
 lib/libsc-a2xx.so
 
 # Misc libraries
-lib/libdiag.so
 lib/libdsm.so
-
 lib/libmm-color-convertor.so
 lib/liboncrpc.so
 lib/libpbmlib.so
+lib/libcneapiclient.so
+lib/libcneqmiutils.so
+lib/libdnshostprio.so
+
+# Video Decoding
+lib/libDivxDrm.so
+lib/libmm-color-convertor.so
+lib/libmmosal.so
+lib/libmmparser.so
+lib/libmmparser_divxdrmlib.so
+lib/libwvdrm_L3.so
+lib/libwvm.so
+lib/libWVphoneAPI.so
+lib/libWVStreamControlAPI_L3.so
+lib/drm/libdrmwvmplugin.so
+lib/drm/libhtcomaplugin.so
 
 # NFC
 lib/hw/nfc.ruby.so
 vendor/firmware/libpn544_fw.so
 
 # Radio
+lib/libdiag.so
 lib/libdsi_netctrl.so
 lib/libdsutils.so
 lib/libnetmgr.so
@@ -88,7 +102,6 @@ lib/libqdp.so
 lib/libqmi.so
 lib/libqmiservices.so
 lib/libqueue.so
-lib/libril.so
 lib/libril-qc-qmi-1.so
 lib/libril-qcril-hook-oem.so
 
@@ -99,5 +112,5 @@ lib/libmlplatform.so
 lib/libmpl_jni.so
 lib/libmpl.so
 
-# V8
+# Webkit
 lib/libv8.so
