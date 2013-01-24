@@ -1,1 +1,1 @@
-add_lunch_combo aokp_ruby
+add_lunch_combo aokp_ruby-userdebug
