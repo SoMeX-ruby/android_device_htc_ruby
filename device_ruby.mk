@@ -85,6 +85,20 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     device/htc/ruby/vold.fstab:system/etc/vold.fstab
 
+	
+# Keylayouts and Keychars
+PRODUCT_COPY_FILES += \
+    device/htc/ruby/keychars/ruby-keypad.kcm:system/usr/keychars/ruby-keypad.kcm \
+    device/htc/ruby/keylayout/atmel-touchscreen.kl:system/usr/keylayout/atmel-touchscreen.kl \
+    device/htc/ruby/keylayout/AVRCP.kl:system/usr/keylayout/AVRCP.kl \
+    device/htc/ruby/keylayout/h2w_headset.kl:system/usr/keylayout/h2w_headset.kl \
+    device/htc/ruby/keylayout/ruby-keypad.kl:system/usr/keylayout/ruby-keypad.kl
+
+# Input device config
+PRODUCT_COPY_FILES += \
+    device/htc/ruby/idc/atmel-touchscreen.idc:system/usr/idc/atmel-touchscreen.idc \
+    device/htc/ruby/idc/ruby-keypad.idc:system/usr/idc/ruby-keypad.idc
+
 # HTC BT audio config
 PRODUCT_COPY_FILES += \
     device/htc/holiday/dsp/AudioBTID.csv:system/etc/AudioBTID.csv \
