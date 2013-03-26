@@ -77,15 +77,10 @@ PRODUCT_COPY_FILES += \
     device/htc/ruby/recovery/root/sbin/detect_key:recovery/root/sbin/detect_key \
     device/htc/ruby/recovery/root/sbin/htcbatt:recovery/root/sbin/htcbatt
 
-# Scripts
-PRODUCT_COPY_FILES += \
-    device/htc/ruby/scripts/01bluetooth:system/etc/init.d/01bluetooth
-
 # Vold
 PRODUCT_COPY_FILES += \
     device/htc/ruby/vold.fstab:system/etc/vold.fstab
 
-	
 # Keylayouts and Keychars
 PRODUCT_COPY_FILES += \
     device/htc/ruby/keychars/ruby-keypad.kcm:system/usr/keychars/ruby-keypad.kcm \
@@ -99,55 +94,30 @@ PRODUCT_COPY_FILES += \
     device/htc/ruby/idc/atmel-touchscreen.idc:system/usr/idc/atmel-touchscreen.idc \
     device/htc/ruby/idc/ruby-keypad.idc:system/usr/idc/ruby-keypad.idc
 
-# HTC BT audio config
+# Sound configs
 PRODUCT_COPY_FILES += \
-    device/htc/ruby/dsp/AudioBTID.csv:system/etc/AudioBTID.csv \
-    device/htc/ruby/dsp/A1026_CFG.csv:system/etc/A1026_CFG.csv \
     device/htc/ruby/dsp/AdieHWCodec.csv:system/etc/AdieHWCodec.csv \
-    device/htc/ruby/dsp/AdieHWCodec_BEATS_HW.csv:system/etc/AdieHWCodec_BEATS_HW.csv \
-    device/htc/ruby/dsp/AIC3254_REG.csv:system/etc/AIC3254_REG.csv \
     device/htc/ruby/dsp/AIC3254_REG_DualMic.csv:system/etc/AIC3254_REG_DualMic.csv \
-    device/htc/ruby/dsp/AIC3254_REG_DualMic.txt:system/etc/AIC3254_REG_DualMic.txt \
-    device/htc/ruby/dsp/AIC3254_REG_DualMic_WA.txt:system/etc/AIC3254_REG_DualMic_WA.txt \
     device/htc/ruby/dsp/AIC3254_REG_DualMic_XD.csv:system/etc/AIC3254_REG_DualMic_XD.csv \
+    device/htc/ruby/dsp/AudioBTID.csv:system/etc/AudioBTID.csv \
     device/htc/ruby/dsp/CodecDSPID.txt:system/etc/CodecDSPID.txt \
-    device/htc/ruby/dsp/CodecDSPID_WA.txt:system/etc/CodecDSPID_WA.txt \
-    device/htc/ruby/dsp/CodecDSPID_WB.txt:system/etc/CodecDSPID_WB.txt \
     device/htc/ruby/dsp/TPA2051_CFG.csv:system/etc/TPA2051_CFG.csv \
-    device/htc/ruby/dsp/TPA2051_CFG_BEATS_HW.csv:system/etc/TPA2051_CFG_BEATS_HW.csv \
     device/htc/ruby/dsp/TPA2051_CFG_XC.csv:system/etc/TPA2051_CFG_XC.csv \
-    device/htc/ruby/dsp/soundimage/Sound_FM_HP.txt:system/etc/soundimage/Sound_FM_HP.txt \
-    device/htc/ruby/dsp/soundimage/Sound_FM_SPK.txt:system/etc/soundimage/Sound_FM_SPK.txt \
+    device/htc/ruby/dsp/TPA2051_CFG_XC.csv:system/etc/TPA2051_CFG_XB.csv \
     device/htc/ruby/dsp/soundimage/Sound_MFG.txt:system/etc/soundimage/Sound_MFG.txt \
-    device/htc/ruby/dsp/soundimage/Sound_Original.txt:system/etc/soundimage/Sound_Original.txt \
-    device/htc/ruby/dsp/soundimage/Sound_Original_MFG.txt:system/etc/soundimage/Sound_Original_MFG.txt \
     device/htc/ruby/dsp/soundimage/Sound_Original_Recording.txt:system/etc/soundimage/Sound_Original_Recording.txt \
     device/htc/ruby/dsp/soundimage/Sound_Original_SPK.txt:system/etc/soundimage/Sound_Original_SPK.txt \
-    device/htc/ruby/dsp/soundimage/Sound_Phone_Original.txt:system/etc/soundimage/Sound_Phone_Original.txt \
+    device/htc/ruby/dsp/soundimage/Sound_Original.txt:system/etc/soundimage/Sound_Original.txt \
     device/htc/ruby/dsp/soundimage/Sound_Phone_Original_HP.txt:system/etc/soundimage/Sound_Phone_Original_HP.txt \
-    device/htc/ruby/dsp/soundimage/Sound_Phone_Original_HP_WA.txt:system/etc/soundimage/Sound_Phone_Original_HP_WA.txt \
-    device/htc/ruby/dsp/soundimage/Sound_Phone_Original_HP_WB.txt:system/etc/soundimage/Sound_Phone_Original_HP_WB.txt \
-    device/htc/ruby/dsp/soundimage/Sound_Phone_Original_MFG.txt:system/etc/soundimage/Sound_Phone_Original_MFG.txt \
-    device/htc/ruby/dsp/soundimage/Sound_Phone_Original_MFG_WA.txt:system/etc/soundimage/Sound_Phone_Original_MFG_WA.txt \
     device/htc/ruby/dsp/soundimage/Sound_Phone_Original_REC.txt:system/etc/soundimage/Sound_Phone_Original_REC.txt \
-    device/htc/ruby/dsp/soundimage/Sound_Phone_Original_REC_WA.txt:system/etc/soundimage/Sound_Phone_Original_REC_WA.txt \
-    device/htc/ruby/dsp/soundimage/Sound_Phone_Original_REC_WB.txt:system/etc/soundimage/Sound_Phone_Original_REC_WB.txt \
     device/htc/ruby/dsp/soundimage/Sound_Phone_Original_SPK.txt:system/etc/soundimage/Sound_Phone_Original_SPK.txt \
-    device/htc/ruby/dsp/soundimage/Sound_Phone_Original_SPK_WA.txt:system/etc/soundimage/Sound_Phone_Original_SPK_WA.txt \
-    device/htc/ruby/dsp/soundimage/Sound_Phone_Original_SPK_WB.txt:system/etc/soundimage/Sound_Phone_Original_SPK_WB.txt \
-    device/htc/ruby/dsp/soundimage/Sound_Phone_Original_WA.txt:system/etc/soundimage/Sound_Phone_Original_WA.txt \
     device/htc/ruby/dsp/soundimage/Sound_Rec_Landscape.txt:system/etc/soundimage/Sound_Rec_Landscape.txt \
-    device/htc/ruby/dsp/soundimage/Sound_Rec_mono.txt:system/etc/soundimage/Sound_Rec_mono.txt \
     device/htc/ruby/dsp/soundimage/Sound_Rec_Portrait.txt:system/etc/soundimage/Sound_Rec_Portrait.txt \
-    device/htc/ruby/dsp/soundimage/Sound_Rec_Voice_record.txt:system/etc/soundimage/Sound_Rec_Voice_record.txt \
     device/htc/ruby/dsp/soundimage/Sound_Recording.txt:system/etc/soundimage/Sound_Recording.txt \
-    device/htc/ruby/dsp/soundimage/srs_bypass.cfg:system/etc/soundimage/srs_bypass.cfg \
     device/htc/ruby/dsp/soundimage/srs_geq10.cfg:system/etc/soundimage/srs_geq10.cfg \
-    device/htc/ruby/dsp/soundimage/srs_global.cfg:system/etc/soundimage/srs_global.cfg \
     device/htc/ruby/dsp/soundimage/srsfx_trumedia_51.cfg:system/etc/soundimage/srsfx_trumedia_51.cfg \
     device/htc/ruby/dsp/soundimage/srsfx_trumedia_movie.cfg:system/etc/soundimage/srsfx_trumedia_movie.cfg \
     device/htc/ruby/dsp/soundimage/srsfx_trumedia_music.cfg:system/etc/soundimage/srsfx_trumedia_music.cfg \
-    device/htc/ruby/dsp/soundimage/srsfx_trumedia_music_wide.cfg:system/etc/soundimage/srsfx_trumedia_music_wide.cfg \
     device/htc/ruby/dsp/soundimage/srsfx_trumedia_voice.cfg:system/etc/soundimage/srsfx_trumedia_voice.cfg
 
 # Permissions
@@ -162,14 +132,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     dalvik.vm.lockprof.threshold=500 \
     ro.com.google.locationfeatures=1 \
     dalvik.vm.dexopt-flags=m=y
-
-# Kernel
-ifeq ($(USING_PREBUILT_KERNEL),true)
-PRODUCT_COPY_FILES += $(shell \
-    find device/htc/ruby/modules -name '*.ko' \
-    | sed -r 's/^\/?(.*\/)([^/ ]+)$$/\1\2:system\/lib\/modules\/\2/' \
-    | tr '\n' ' ')
-endif
 
 # call proprietary setup
 $(call inherit-product-if-exists, vendor/htc/ruby/ruby-vendor.mk)

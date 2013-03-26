@@ -1,6 +1,6 @@
-Header, HOY_soundeffet_2011_0601
+Header, RUY_soundeffet_2011_0711
 ## Group for phone ##
-Phone_Default,/system/etc/soundimage/Sound_Phone_Original.txt
+Phone_Default,/system/etc/soundimage/Sound_Phone_Original_HP.txt
 Phone_Handset_Dualmic,/system/etc/soundimage/Sound_Phone_Original_REC.txt
 Phone_Speaker_Dualmic,/system/etc/soundimage/Sound_Phone_Original_SPK.txt
 Phone_Headset,/system/etc/soundimage/Sound_Phone_Original_HP.txt

@@ -1,9 +1,0 @@
-#!/system/bin/sh
-modprobe wl12xx
-modprobe btwilink
-for i in /sys/class/rfkill/*
-do
-echo $i
-echo 1 > $i/state
-done
-

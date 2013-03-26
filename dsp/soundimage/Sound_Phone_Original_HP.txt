@@ -29,7 +29,7 @@ w 30 01 08 # Power Configuration Register
 w 30 02 21 # LDO Control Register
 w 30 47 31 # Analog Input Quick Charging Configuration Register
 w 30 7b 01 # Reference Power-up Configuration Register
-w 30 0a 3b # Common Mode Control Register
+w 30 0a 33 # Common Mode Control Register
 w 30 00 00 # Page Select Register
 w 30 04 03 # Clock Setting Register 1, Multiplexers
 w 30 05 91 # Clock Setting Register 2, PLL P&R Values
@@ -672,7 +672,7 @@ w 30 3b 00 # C72 Reserved
 w 30 00 50 # Page Select Register
 w 30 08 30 # ADC miniDSP instruction 
 w 30 09 24 # ADC miniDSP instruction 
-w 30 0a 9d # ADC miniDSP instruction 
+w 30 0a 4e # ADC miniDSP instruction 
 w 30 0b 00 # ADC miniDSP instruction 
 w 30 0c 00 # ADC miniDSP instruction 
 w 30 0d 00 # ADC miniDSP instruction 

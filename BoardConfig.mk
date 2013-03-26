@@ -34,12 +34,7 @@ TARGET_BOOTLOADER_BOARD_NAME := ruby
 BOARD_KERNEL_BASE := 0x48000000
 BOARD_KERNEL_CMDLINE := console=ttyHSL3 androidboot.hardware=ruby no_console_suspend=1
 BOARD_KERNEL_PAGE_SIZE := 2048
-TARGET_PREBUILT_KERNEL := device/htc/ruby/prebuilt/kernel
-USING_PREBUILT_KERNEL := false
 TARGET_KERNEL_CONFIG := ruby_defconfig
-
-# USB
-TARGET_USE_CUSTOM_LUN_FILE_PATH := "/sys/class/android_usb/android0/f_mass_storage/lun%d/file"
 
 WLAN_MODULES:
 	make clean -C hardware/ti/wlan/mac80211/compat_wl12xx
@@ -73,9 +68,6 @@ BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE := ruby
 
 # NFC
 BOARD_HAVE_NFC := true
-
-# Bluetooth
-BOARD_WPAN_DEVICE := true
 
 # Use libril in the device tree
 BOARD_PROVIDES_LIBRIL := true
