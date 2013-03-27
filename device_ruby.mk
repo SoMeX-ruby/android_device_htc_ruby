@@ -22,6 +22,10 @@ $(call inherit-product, device/htc/msm8660-common/msm8660.mk)
 
 DEVICE_PACKAGE_OVERLAYS += device/htc/ruby/overlay
 
+# Bluetooth
+PRODUCT_PACKAGES += \
+    uim-sysfs
+
 # GPS
 PRODUCT_PACKAGES += \
     gps.ruby
@@ -49,6 +53,7 @@ PRODUCT_COPY_FILES += \
     device/htc/ruby/firmware/ti-connectivity/wl127x-fw-4-mr.bin:system/etc/firmware/ti-connectivity/wl127x-fw-4-mr.bin \
     device/htc/ruby/firmware/ti-connectivity/wl127x-fw-4-plt.bin:system/etc/firmware/ti-connectivity/wl127x-fw-4-plt.bin \
     device/htc/ruby/firmware/ti-connectivity/wl127x-fw-4-sr.bin:system/etc/firmware/ti-connectivity/wl127x-fw-4-sr.bin \
+<<<<<<< HEAD
     device/htc/ruby/firmware/ti-connectivity/wl1271-nvs.bin:system/etc/firmware/ti-connectivity/wl1271-nvs.bin \
     device/htc/ruby/firmware/firmware.bin:system/etc/wifi/firmware.bin \
     device/htc/ruby/firmware/firmware_ap.bin:system/etc/wifi/firmware_ap.bin \
@@ -61,6 +66,9 @@ PRODUCT_COPY_FILES += \
     device/htc/ruby/firmware/version:system/etc/firmware/version \
     device/htc/ruby/firmware/WL127x_2.0_2.25.bts:system/etc/firmware/WL127x_2.0_2.25.bts 
 
+=======
+    device/htc/ruby/firmware/ti-connectivity/wl1271-nvs.bin:system/etc/firmware/ti-connectivity/wl1271-nvs.bin
+>>>>>>> 06de6db... ruby: use source built uim-sysfs, move TIInit.bts to vendor
 
 # Ramdisk files
 PRODUCT_COPY_FILES += \
