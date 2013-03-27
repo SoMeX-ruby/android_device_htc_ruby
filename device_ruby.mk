@@ -48,31 +48,6 @@ PRODUCT_PACKAGES += \
     TQS_D_1.7_127x.ini \
     calibrator
 
-<<<<<<< HEAD
-# Radio Chip Firmware 
-PRODUCT_COPY_FILES += \
-    device/htc/ruby/firmware/ti-connectivity/wl127x-fw-4-mr.bin:system/etc/firmware/ti-connectivity/wl127x-fw-4-mr.bin \
-    device/htc/ruby/firmware/ti-connectivity/wl127x-fw-4-plt.bin:system/etc/firmware/ti-connectivity/wl127x-fw-4-plt.bin \
-    device/htc/ruby/firmware/ti-connectivity/wl127x-fw-4-sr.bin:system/etc/firmware/ti-connectivity/wl127x-fw-4-sr.bin \
-<<<<<<< HEAD
-    device/htc/ruby/firmware/ti-connectivity/wl1271-nvs.bin:system/etc/firmware/ti-connectivity/wl1271-nvs.bin \
-    device/htc/ruby/firmware/firmware.bin:system/etc/wifi/firmware.bin \
-    device/htc/ruby/firmware/firmware_ap.bin:system/etc/wifi/firmware_ap.bin \
-    device/htc/ruby/firmware/fmc_init_1273.2.bts:system/etc/firmware/fmc_init_1273.2.bts \
-    device/htc/ruby/firmware/fm_rx_init_1273.2.bts:system/etc/firmware/fm_rx_init_1273.2.bts \
-    device/htc/ruby/firmware/htc_1271fw.bin:system/etc/firmware/htc_1271fw.bin \
-    device/htc/ruby/firmware/htc_1271fw_196_header.bin:system/etc/firmware/htc_1271fw_196_header.bin \
-    device/htc/ruby/firmware/TIInit_7.6.15.bts:system/etc/firmware/TIInit_7.6.15.bts \
-    device/htc/ruby/firmware/vac_config.ini:system/etc/firmware/vac_config.ini \
-    device/htc/ruby/firmware/version:system/etc/firmware/version \
-    device/htc/ruby/firmware/WL127x_2.0_2.25.bts:system/etc/firmware/WL127x_2.0_2.25.bts 
-
-=======
-    device/htc/ruby/firmware/ti-connectivity/wl1271-nvs.bin:system/etc/firmware/ti-connectivity/wl1271-nvs.bin
->>>>>>> 06de6db... ruby: use source built uim-sysfs, move TIInit.bts to vendor
-
-=======
->>>>>>> b4ccf59... ruby: move TI WLAN firmware to vendor
 # Ramdisk files
 PRODUCT_COPY_FILES += \
     device/htc/ruby/ramdisk/fstab.ruby:root/fstab.ruby \
