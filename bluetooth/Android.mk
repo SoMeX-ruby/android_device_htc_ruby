@@ -33,7 +33,7 @@ LOCAL_SHARED_LIBRARIES := \
 	liblog
 
 LOCAL_PRELINK_MODULE := false
-LOCAL_MODULE := libbt-vendor
+LOCAL_MODULE := libbt-vendor-ti
 LOCAL_MODULE_TAGS := optional
 LOCAL_MODULE_PATH := $(ANDROID_PRODUCT_OUT)/system/vendor/lib
 
