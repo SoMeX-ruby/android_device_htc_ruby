@@ -26,10 +26,6 @@ DEVICE_PACKAGE_OVERLAYS += device/htc/ruby/overlay
 PRODUCT_PACKAGES += \
     gps.ruby
 
-# Bluetooth
-PRODUCT_PACKAGES += \
-    libbt-vendor-ti
-
 # NFC
 PRODUCT_PACKAGES += \
     libnfc \
