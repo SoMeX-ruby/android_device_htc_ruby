@@ -48,7 +48,6 @@ PRODUCT_PACKAGES += \
     TQS_D_1.7_127x.ini \
     calibrator
 
-<<<<<<< HEAD
 # Radio Chip Firmware 
 PRODUCT_COPY_FILES += \
     device/htc/ruby/firmware/ti-connectivity/wl127x-fw-4-mr.bin:system/etc/firmware/ti-connectivity/wl127x-fw-4-mr.bin \
@@ -71,8 +70,6 @@ PRODUCT_COPY_FILES += \
     device/htc/ruby/firmware/ti-connectivity/wl1271-nvs.bin:system/etc/firmware/ti-connectivity/wl1271-nvs.bin
 >>>>>>> 06de6db... ruby: use source built uim-sysfs, move TIInit.bts to vendor
 
-=======
->>>>>>> b4ccf59... ruby: move TI WLAN firmware to vendor
 # Ramdisk files
 PRODUCT_COPY_FILES += \
     device/htc/ruby/ramdisk/fstab.ruby:root/fstab.ruby \
