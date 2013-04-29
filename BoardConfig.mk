@@ -69,6 +69,10 @@ BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE := ruby
 # NFC
 BOARD_HAVE_NFC := true
 
+# Graphics
+TARGET_USES_ION := true
+BOARD_HAVE_OLD_ION_API := true
+
 # Use libril in the device tree
 BOARD_PROVIDES_LIBRIL := true
 
