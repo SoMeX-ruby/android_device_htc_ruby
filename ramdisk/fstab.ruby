@@ -6,5 +6,5 @@
 
 /dev/block/mmcblk0p29	/system		ext4	ro,data=ordered,noauto_da_alloc				wait
 /dev/block/mmcblk0p30	/cache		ext4	noatime,nosuid,nodev,data=ordered,noauto_da_alloc	wait
-/dev/block/mmcblk0p31	/data		ext4	noatime,nosuid,nodev,data=ordered,noauto_da_alloc	wait
+/dev/block/mmcblk0p31	/data		  ext4	noatime,nosuid,nodev,data=ordered,noauto_da_alloc	wait,encryptable=footer
 /dev/block/mmcblk0p32	/devlog		ext4	noatime,nosuid,nodev,data=ordered,noauto_da_alloc	wait
