@@ -15,7 +15,6 @@
 /dev/gemini0            0660    system      camera
 /dev/msm_camera/*       0660    system      camera
 /dev/pmem_smipool*      0660    system      camera
-/dev/rawchip0           0660    system      system
 /dev/pmem_camera*       0660    system      camera
 /dev/cam                0660    system      camera
 /dev/video*             0660    system      camera
