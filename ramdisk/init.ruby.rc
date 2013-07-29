@@ -67,7 +67,7 @@ on init
 
 on fs
     # mount all mmc partitions
-    mount_all /fstab.ruby
+    mount_all ./fstab.ruby
 
     setprop ro.crypto.tmpfs_options size=128m,mode=0771,uid=1000,gid=1000
 
