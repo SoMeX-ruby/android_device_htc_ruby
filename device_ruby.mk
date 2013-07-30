@@ -44,6 +44,10 @@ PRODUCT_PACKAGES += \
     TQS_D_1.7_127x.ini \
     calibrator
 
+# netcmdiface
+PRODUCT_PACKAGES += \
+    libnetcmdiface
+
 # Ramdisk files
 PRODUCT_COPY_FILES += \
     device/htc/ruby/ramdisk/fstab.ruby:root/fstab.ruby \
