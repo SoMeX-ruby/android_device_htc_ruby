@@ -14,7 +14,7 @@ on early-init
     export EXTERNAL_STORAGE /storage/sdcard0
     export SECONDARY_STORAGE /storage/sdcard1
 
-on emmc-fs
+on init
     mkdir /devlog 0700 root root
 
     # msm8x60 firmware
