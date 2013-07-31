@@ -6,12 +6,16 @@ on early-init
     symlink /storage/sdcard0 /sdcard
     symlink /storage/sdcard0 /mnt/sdcard
 
+    mkdir /storage/usbdisk 0775 system system
     mkdir /storage/sdcard1 0000 system system
     symlink /storage/sdcard1 /external_sd
     symlink /storage/sdcard1 /mnt/external_sd
 
     export EXTERNAL_STORAGE /storage/sdcard0
     export SECONDARY_STORAGE /storage/sdcard1
+
+on emmc-fs
+    mkdir /devlog 0700 root root
 
     # msm8x60 firmware
     rm /vendor
@@ -21,12 +25,7 @@ on early-init
     mkdir /vendor/firmware/misc 0771 system system
     mkdir /vendor/firmware/misc_mdm 0771 system system
 
-    wait /dev/block/mmcblk0p21
-    wait /dev/block/mmcblk0p17
-    wait /dev/block/mmcblk0p18
-    mount vfat /dev/block/mmcblk0p21 /vendor/firmware/adsp wait ro shortname=lower
-    mount vfat /dev/block/mmcblk0p17 /vendor/firmware/misc wait ro shortname=lower
-    mount vfat /dev/block/mmcblk0p18 /vendor/firmware/misc_mdm wait ro shortname=lower
+    mount_all ./fstab.ruby
 
     symlink /vendor/firmware/adsp/q6.b07 /vendor/firmware/q6.b07
     symlink /vendor/firmware/adsp/q6.b06 /vendor/firmware/q6.b06
@@ -62,12 +61,7 @@ on early-init
     # Force loading of modem and Q6 images
     write /dev/smd_pkt_loopback 1
 
-on init
-    mkdir /devlog 0700 root root
-
 on fs
-    # mount all mmc partitions
-    mount_all ./fstab.ruby
 
     setprop ro.crypto.tmpfs_options size=128m,mode=0771,uid=1000,gid=1000
 
@@ -122,6 +116,9 @@ on boot
 
     # for modem link
     chown system system /sys/module/serial/parameters/modem_enabled
+
+    # 4.3 needs this
+    chmod 0644 /proc/cmdline
 
     # symlink for HDMI
     symlink /dev/graphics/fb1 /dev/graphics/hdmi
@@ -315,6 +312,9 @@ service zchgd_offmode /system/bin/zchgd -pseudooffmode
 service zchgd_onmode /system/bin/zchgd -onmode
     user root
     oneshot
+
+on property:ro.boot.emmc=true
+    start rmt_storage
 
 on property:init.svc.bootanim=stopped
     start qcom-post-boot
