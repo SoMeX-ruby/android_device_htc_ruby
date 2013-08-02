@@ -14,7 +14,7 @@ on early-init
     export EXTERNAL_STORAGE /storage/sdcard0
     export SECONDARY_STORAGE /storage/sdcard1
 
-on emmc-fs
+on fs
     mkdir /devlog 0700 root root
 
     # msm8x60 firmware
@@ -60,8 +60,6 @@ on emmc-fs
 
     # Force loading of modem and Q6 images
     write /dev/smd_pkt_loopback 1
-
-on fs
 
     setprop ro.crypto.tmpfs_options size=128m,mode=0771,uid=1000,gid=1000
 
