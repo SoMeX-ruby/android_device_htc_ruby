@@ -6,10 +6,9 @@
 
 /dev/block/mmcblk0p23   /recovery       emmc      defaults     defaults
 /dev/block/mmcblk0p29	/system		ext4	  rw,noatime,barrier=0      wait
-/dev/block/mmcblk0p31	/data		ext4	
 
 #SDcard
 /devices/platform/msm_sdcc.3/mmc_host/mmc1    /storage/sdcard0     auto     defaults    voldmanaged=sdcard:auto
 
 # data
-noatime,nosuid,nodev,data=ordered,noauto_da_alloc	wait,encryptable=footer
+/dev/block/mmcblk0p31	/data		ext4	noatime,nosuid,nodev,data=ordered,noauto_da_alloc	wait,encryptable=footer
