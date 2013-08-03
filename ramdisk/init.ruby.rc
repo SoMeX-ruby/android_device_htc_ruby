@@ -14,9 +14,6 @@ on early-init
     export EXTERNAL_STORAGE /storage/sdcard0
     export SECONDARY_STORAGE /storage/sdcard1
 
-on fs
-    mkdir /devlog 0700 root root
-
     # msm8x60 firmware
     rm /vendor
     mkdir /vendor 0771 system system
@@ -25,7 +22,12 @@ on fs
     mkdir /vendor/firmware/misc 0771 system system
     mkdir /vendor/firmware/misc_mdm 0771 system system
 
-    mount_all ./fstab.ruby
+    wait /dev/block/mmcblk0p21
+    wait /dev/block/mmcblk0p17
+    wait /dev/block/mmcblk0p18
+    mount vfat /dev/block/mmcblk0p21 /vendor/firmware/adsp wait ro shortname=lower
+    mount vfat /dev/block/mmcblk0p17 /vendor/firmware/misc wait ro shortname=lower
+    mount vfat /dev/block/mmcblk0p18 /vendor/firmware/misc_mdm wait ro shortname=lower
 
     symlink /vendor/firmware/adsp/q6.b07 /vendor/firmware/q6.b07
     symlink /vendor/firmware/adsp/q6.b06 /vendor/firmware/q6.b06
@@ -61,7 +63,12 @@ on fs
     # Force loading of modem and Q6 images
     write /dev/smd_pkt_loopback 1
 
-    setprop ro.crypto.tmpfs_options size=128m,mode=0771,uid=1000,gid=1000
+on init
+    mkdir /devlog 0700 root root
+
+on fs
+    # mount all mmc partitions
+    mount_all /fstab.ruby
 
     symlink /system/vendor/lib /vendor/lib
 
