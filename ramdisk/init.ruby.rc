@@ -68,7 +68,7 @@ on init
 
 on fs
     # mount all mmc partitions
-    mount_all /fstab.ruby
+    mount_all ./fstab.ruby
 
     symlink /system/vendor/lib /vendor/lib
 
