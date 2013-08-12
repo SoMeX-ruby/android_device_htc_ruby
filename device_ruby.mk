@@ -1,5 +1,6 @@
 #
 # Copyright (C) 2012 The CyanogenMod Project
+# Copyright (C) 2013 The SomethingExplosive Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -21,6 +22,15 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 $(call inherit-product, device/htc/msm8660-common/msm8660.mk)
 
 DEVICE_PACKAGE_OVERLAYS += device/htc/ruby/overlay
+
+# Kernel and kernel modules
+PRODUCT_COPY_FILES += \
+    device/htc/ruby/kernel:kernel \
+    device/htc/ruby/modules/btwilink.ko:system/lib/modules/btwilink.ko \
+    device/htc/ruby/modules/cfg80211.ko:system/lib/modules/cfg80211.ko \
+    device/htc/ruby/modules/fm_drv.ko:system/lib/modules/fm_drv.ko \
+    device/htc/ruby/modules/lib80211.ko:system/lib/modules/lib80211.ko \
+    device/htc/ruby/modules/mac80211.ko:system/lib/modules/mac80211.ko
 
 # GPS
 PRODUCT_PACKAGES += \
