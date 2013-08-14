@@ -10,8 +10,8 @@
 /dev/block/mmcblk0p32	/devlog		ext4	noatime,nosuid,nodev,data=ordered,noauto_da_alloc	wait
 
 # Bits from recovery.fstab
-/dev/block/mmcblk0p22   /boot		emmc	defaults
-/dev/block/mmcblk0p24	/misc		emmc	defaults
-/dev/block/mmcblk0p23	/recovery	emmc	defaults
-/dev/block/mmcblk1p1	/sdcard		vfat	defaults
-/dev/block/mmcblk0p36	/internal_sdcard	vfat	defaults
+/dev/block/mmcblk0p22   /boot		emmc	defaults						wait
+/dev/block/mmcblk0p24	/misc		emmc	defaults						wait
+/dev/block/mmcblk0p23	/recovery	emmc	defaults						wait
+/dev/block/mmcblk1p1	/sdcard		vfat	defaults						wait
+/dev/block/mmcblk0p36	/internal_sdcard	vfat	defaults					wait
