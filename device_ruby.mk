@@ -30,7 +30,8 @@ PRODUCT_COPY_FILES += \
     device/htc/ruby/modules/cfg80211.ko:system/lib/modules/cfg80211.ko \
     device/htc/ruby/modules/fm_drv.ko:system/lib/modules/fm_drv.ko \
     device/htc/ruby/modules/lib80211.ko:system/lib/modules/lib80211.ko \
-    device/htc/ruby/modules/mac80211.ko:system/lib/modules/mac80211.ko
+    device/htc/ruby/modules/mac80211.ko:system/lib/modules/mac80211.ko \
+    device/htc/ruby/modules/tty_hci.ko:system/lib/modules/tty_hci.ko
 
 # GPS
 PRODUCT_PACKAGES += \
